@@ -1,0 +1,94 @@
+{
+  "shengchanhuanjing": {
+    "prefix": "shengchanhuanjing",
+    "body": [
+      "process.env.NODE_ENV $1== 'production'"
+    ],
+    "description": "生产环境"
+  },
+  "daima": {
+    "prefix": "daima",
+    "body": [
+      "/**",
+      "* $1",
+      "* @params $2",
+      "*/"
+    ],
+    "description": "注释"
+  },
+  "zhushi": {
+    "prefix": "zhushi",
+    "body": [
+      "/**",
+      "* @description $1",
+      "* @author PP",
+      "*/"
+    ],
+    "description": "注释"
+  },
+  "react-default-class": {
+    "prefix": "jsr",
+    "body": [
+      "import React, { Component } from 'react'",
+      "import {",
+      "    BrowserRouter as Router,",
+      "    Route,",
+      "    Switch,",
+      "} from 'react-router-dom'\n",
+      "export default class $1 extends Component {\n",
+      "    constructor (props) {",
+      "        super(props)",
+      "        this.state = {}",
+      "    }\n",
+      "    componentDidMount () {",
+      "        // this.fetchData()",
+      "    }\n",
+      "    fetchData = () => {\n",
+      "    }\n",
+      "    render () {",
+      "        return (",
+      "            <div>内容</div>",
+      "        )",
+      "    }",
+      "}",
+    ],
+    "description": "react 模板"
+  },
+  "vue-tsx": {
+    "prefix": "vue-tsx",
+    "body": [
+      "import {",
+      " Component,",
+      " Vue",
+      "} from 'vue-property-decorator'",
+
+      "@Component({",
+      " name: 'Components', ",
+      "})",
+      "export default class Components extends Vue {",
+      " created() {}",
+      " mounted() {}",
+      " render() {",
+      "   return (",
+      "     <div>1</div>",
+      "   )",
+      " }",
+      "}"
+    ],
+    "description": "vue-tsx模板"
+  },
+  "vue-prop": {
+    "prefix": "@Prop",
+    "body": [
+      "@Prop() private $1$3: $2"
+    ],
+    "description": "vue@Prop代码"
+  },
+  "vue-String": {
+    "prefix": "String",
+    "body": [
+      "String"
+    ],
+    "description": "String对象"
+  }
+}

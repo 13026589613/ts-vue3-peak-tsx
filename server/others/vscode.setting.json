@@ -1,0 +1,101 @@
+{
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.validation.template": false, //遍历
+  "git.ignoreMissingGitWarning": true,
+  // "files.autoSave": "on",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "eslint.autoFixOnSave": true,
+  "editor.tabCompletion": true,
+  // "eslint.validate": [ //eslint配置
+  //   "javascript",
+  //   "javascriptreact",
+  //   "html",
+  //   {
+  //     "language": "html",
+  //     "autoFix": true
+  //   },
+  //   {
+  //     "language": "vue",
+  //     "autoFix": true
+  //   },
+  //   {
+  //     "language": "ts",
+  //     "autoFix": true
+  //   }
+  // ],
+  // "eslint.options": {
+  //   "plugins": ["html"]
+  // },
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "editor.fontSize": 14,
+  "editor.detectIndentation": false, //缩进
+  "editor.wordWrap": "off", //换行
+  "editor.tabSize": 2,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  //点击保存时，根据 eslint 规则自定修复，同时集成 prettier 到 eslint 中
+  "prettier.eslintIntegration": true,
+  //prettier自动格式化tab的空格数量！
+  // "prettier.tabWidth": 2,
+  // Indent lines with tabs
+  "prettier.useTabs": false,
+  "search.followSymlinks": false,
+  "explorer.confirmDelete": false,
+  "css.fileExtensions": ["css", "sass", "scss", "less"],
+  "files.associations": {
+    "*.vue": "html",
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 0,
+  "minapp-vscode.disableAutoConfig": true,
+  "TortoiseSVN.tortoiseSVNProcExePath": "https://39.107.96.13:443/svn/java/renren-security",
+  "emmet.includeLanguages": {
+    "wxml": "html"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "[javascript]": {
+    // "editor.defaultFormatter": "HookyQR.beautify"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[tsx]": {
+    // "editor.defaultFormatter": "HookyQR.beautify"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.iconTheme": "eq-material-theme-icons-palenight",
+  "materialTheme.fixIconsRunning": false,
+  // "git.ignoreMissingGitWarning": true,
+  // "workbench.iconTheme": "vscode-icons",
+  // "files.autoSave":"off",
+  // "eslint.autoFixOnSave": true,
+  // "files.autoSave":"off",
+  // "eslint.validate": [//eslint配置
+  //     "javascript",
+  //     "javascriptreact",
+  //     "html",
+  //     { "language": "vue", "autoFix": true },
+  //     { "language": "ts", "autoFix": true },
+  //     { "language": "tsx", "autoFix": true }
+  // ],
+  "eslint.options": {
+    "plugins": ["html"]
+  },
+  "vsicons.dontShowNewVersionMessage": true,
+  "explorer.confirmDragAndDrop": false,
+  "files.exclude": {
+    "node_modules/": false
+  },
+  "workbench.colorTheme": "Default High Contrast",
+}
