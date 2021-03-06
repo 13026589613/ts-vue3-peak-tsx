@@ -3,7 +3,7 @@
  */
 import { defineComponent, ref, getCurrentInstance, onMounted } from 'vue'
 import { Vue, Options, prop, mixins } from 'vue-class-component'
-import { baseStore } from '@/store/modules/base'
+// import { baseStore } from '@/store/modules/base'
 
 export default defineComponent({
   name: 'TSXHelloWordComponents',
@@ -31,7 +31,7 @@ export default defineComponent({
         {this.$slots.slotName ? this.$slots.slotName() : null}
 
         {/* store 调用 */}
-        {`store-token配置：${baseStore.getTokenState}`}
+        {/* {`store-token配置：${baseStore.getTokenState}`} */}
       </div>
     )
   },

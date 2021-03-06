@@ -4,6 +4,10 @@
     props 参数传递: {{ msg }} <br />
     <button @click="handleInsert">Store 点击记录: {{ count }} </button>
 
+    <!-- store 中 值 -->
+    <br />
+    {{ `store中的值展示：${this.showSpin}` }}
+
     <slot></slot>
   </div>
 </template>
@@ -14,7 +18,7 @@
   import { Prop } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
 
-  const baseStore = namespace('root.baseStore')
+  const exampleModule = namespace('baseStore')
 
   @Options({
     name: 'HelloWorld',
@@ -22,11 +26,15 @@
     emits: ['countChange'],
   })
   export default class extends Vue {
-    @baseStore.State('tokenState')
-    tokenState?: string
+    @exampleModule.State('tokenState')
+    showSpin!: boolean
 
-    @baseStore.Action('baseStore/changeToken')
-    actionChangeToken!: (arg: string) => void
+    @exampleModule.Action('InitLoginUserInfo')
+    actionInitLoginUserInfo!: (arg: string) => void
+
+    get isCollapse(): boolean {
+      return this.sidebarOpend
+    }
 
     @Prop({
       type: String,
@@ -36,8 +44,7 @@
     readonly msg!: string
 
     mounted = onMounted(() => {
-      console.log(this.tokenState)
-      // this.actionChangeToken('')
+      // this.actionInitLoginUserInfo('')
     })
 
     protected count = 1

@@ -1,7 +1,10 @@
 /**
- * @description 本文件是 自动 import 所有注解式的store 文件。
- *              PS：推荐在使用时 按需 import 相应的modules 模块。 如：import baseStore from '@/store/modules/base'
- *              采用注入式，store 会自动检测并填充 state、modules、getters。注入后可采用 对象化调用或者vue-class 注入式获取值
+ * @description 获取modules 文件提供给store。无需填写，moudles下文件自动加载
+ *              本文件会自动获取modules 下的 store 配置文件，自动采用namespace命名空间。配合 vue-class 或者 vuex 获取store数据
+ * 其他说明：
+ *              常规模式的store
+ *              采用注入store modules 的方式，getter 可以通过getters.ts 文件集中注入
+ *              mutations 用于声明 commit 的 state 的传值事件声明，也可以在store中自定义声明
  * @author PP
  */
 const toHumpClassName = (string: string, formatter: string = '_'): string => {
@@ -16,16 +19,18 @@ const toHumpClassName = (string: string, formatter: string = '_'): string => {
 
 const storeModules: any = {}
 const files = require.context('./', true, /.ts$/).keys()
+
 files.forEach(fileName => {
   if (fileName.indexOf('index') === -1) {
     const storeName: string = toHumpClassName(
       fileName.replace('.', '').replace('/', '').replace('ts', '').replace('.', ''),
       '-'
     )
-
-    import(`${fileName}`)
+    storeModules[storeName] = require(`${fileName}`).default
   }
 })
+
+export default { ...storeModules }
 
 // const path = require('path')
 // const requireModules = require.context('./normal', true, /index\.(ts|js)$/iu)

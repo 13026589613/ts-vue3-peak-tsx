@@ -47,5 +47,3 @@ export const LoginRoute: AppRouteRecordRaw = {
  * @description 抛出路由集合对象
  */
 export const basicRoutes = [LoginRoute, RootRoute, ...RouteModuleList]
-
-console.log(basicRoutes)

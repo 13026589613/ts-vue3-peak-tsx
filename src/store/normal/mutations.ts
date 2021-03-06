@@ -1,3 +1,6 @@
+/**
+ * @description vuex mutations 声明 集合
+ */
 export const BASE = {
   SET_MENU_LIST: 'set_menu_list', // 存储登录用户权限菜单
   ACCESS_TOKEN: 'Access-Token', // 设置交互 token

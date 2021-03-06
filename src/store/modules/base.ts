@@ -1,5 +1,7 @@
 /**
- * @description 注解自动绑定 store - modules - base
+ * @description 注解式store - baseStore 样例
+ *              import 引入时会自动注入到store中
+ *              注解自动绑定 store - modules - base
  * @returns base 对象
  */
 import store from '@/store/index'
