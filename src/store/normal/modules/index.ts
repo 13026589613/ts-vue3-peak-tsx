@@ -7,21 +7,8 @@
  *              mutations 用于声明 commit 的 state 的传值事件声明，也可以在store中自定义声明
  * @author PP
  */
-// 遍历循环文件，读取文件并require加载
+
 const storeModules: any = {}
-const files = require.context('./', true, /.ts$/).keys()
-files.forEach(fileName => {
-  if (fileName.indexOf('index') === -1) {
-    const storeName: string = toHumpClassName(
-      fileName.replace('.', '').replace('/', '').replace('ts', '').replace('.', ''),
-      '-'
-    )
-    storeModules[storeName] = require(`${fileName}`).default
-  }
-})
-
-export default { ...storeModules }
-
 const toHumpClassName = (string: string, formatter: string = '_'): string => {
   const stringArray = string.split(formatter).filter(str => str && str.trim())
   stringArray.map((item, index) => {
@@ -31,6 +18,22 @@ const toHumpClassName = (string: string, formatter: string = '_'): string => {
   })
   return stringArray.join('')
 }
+
+// 遍历循环文件，读取文件并require加载
+require
+  .context('./', true, /.ts$/)
+  .keys()
+  .forEach(fileName => {
+    if (fileName.indexOf('index') === -1) {
+      const storeName: string = toHumpClassName(
+        fileName.replace('.', '').replace('/', '').replace('ts', '').replace('.', ''),
+        '-'
+      )
+      storeModules[storeName] = require(`${fileName}`).default
+    }
+  })
+
+export default { ...storeModules }
 
 // const path = require('path')
 // const requireModules = require.context('./', true, /index\.(ts|js)$/iu)
