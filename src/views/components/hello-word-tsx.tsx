@@ -3,6 +3,7 @@
  */
 import { defineComponent, ref, getCurrentInstance, onMounted } from 'vue'
 import { Vue, Options, prop, mixins } from 'vue-class-component'
+import { baseStore } from '@/store/modules/base'
 
 export default defineComponent({
   name: 'TSXHelloWordComponents',
@@ -14,7 +15,6 @@ export default defineComponent({
       default: '你好',
     },
   },
-
   // 采用render 方式渲染
   render() {
     const defaultString = ref<string>('hello-word')
@@ -28,7 +28,10 @@ export default defineComponent({
         </div>
         <button onClick={this.handleInsert}>Store 点击记录: {this.count} </button>
 
-        <slot name='slot'></slot>
+        {this.$slots.slotName ? this.$slots.slotName() : null}
+
+        {/* store 调用 */}
+        {`store-token配置：${baseStore.getTokenState}`}
       </div>
     )
   },

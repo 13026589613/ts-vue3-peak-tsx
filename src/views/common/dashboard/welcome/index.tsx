@@ -35,7 +35,7 @@ export default class WelcomeComponent extends Vue {
    * @description 初始化加载
    */
   moment: any = onMounted(() => {
-    console.log(this.dataList[0])
+    console.log('初始化加载=--= on-mounted')
   })
 
   /**
@@ -77,15 +77,26 @@ export default class WelcomeComponent extends Vue {
           </hello-word-ts-class>
 
           {/* tsx 文件组件 */}
-          <hello-word-tsx msg={'ts-msg-props'} onCountChange={this.emitCountChange}>
-            {/* <template #appendFooter></template> */}
-            <p v-slot='slot'>tsx 文件组件 事件反馈值 ---- {this.countData}</p>
-          </hello-word-tsx>
+          <hello-word-tsx
+            msg={'ts-msg-props'}
+            onCountChange={this.emitCountChange}
+            v-slots={{
+              slotName: () => {
+                return <p>tsx - class组件 事件反馈值 ---- {this.countData}</p>
+              },
+            }}
+          ></hello-word-tsx>
 
           {/* tsx - class 注解模式组件 */}
-          <hello-word-class-tsx msg={'tsx - class -msg-props'} onCountChange={this.emitCountChange}>
-            <p>tsx - class组件 事件反馈值 ---- {this.countData}</p>
-          </hello-word-class-tsx>
+          <hello-word-class-tsx
+            msg={'tsx - class -msg-props'}
+            onCountChange={this.emitCountChange}
+            v-slots={{
+              slotName: () => {
+                return <p>tsx - class组件 事件反馈值 ---- {this.countData}</p>
+              },
+            }}
+          ></hello-word-class-tsx>
         </div>
       </div>
     )

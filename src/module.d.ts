@@ -15,6 +15,8 @@ declare module 'moment/locale/*' {
 declare module '@types/node'
 declare module 'fastclick'
 
+declare module 'vuex-class'
+
 // declare module '@antv/g2plot'
 // declare module 'insert-css'
 // declare module 'electron'

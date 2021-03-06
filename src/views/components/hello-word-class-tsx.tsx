@@ -3,7 +3,8 @@
  */
 import { defineComponent, ref, getCurrentInstance, onMounted } from 'vue'
 import { Vue, Options, prop, mixins } from 'vue-class-component'
-import { Watch, Prop } from 'vue-property-decorator'
+import { Watch, Prop, Emit } from 'vue-property-decorator'
+import { namespace } from 'vuex-class'
 
 const PropsInfo = prop({
   msg: {
@@ -13,6 +14,7 @@ const PropsInfo = prop({
   },
 })
 
+const baseStore = namespace('base')
 @Options({
   name: 'TSXClassComponent',
   emits: ['countChange'],
@@ -22,12 +24,17 @@ export default class TSXClassComponent extends Vue {
   private count: any = ref(1)
   private dataValue: string | null = '默认文字2' // 声明一个data
 
+  // @baseStore.State('tokenState')
+  // tokenState!: number
+
   // 通过 vue-property-decorator 获取参数
   // @Prop({
   //   type: String,
   //   default: '你好',
   // })
   // private msg: string = ''
+
+  moment: any = onMounted(() => {})
 
   /**
    * @description 渲染界面主体内容
@@ -45,15 +52,21 @@ export default class TSXClassComponent extends Vue {
         </div>
 
         <button onClick={this.handleInsert}>Store 点击记录: {this.count} </button>
-        <slot name='slot'></slot>
+
+        {/* 插槽 */}
+        {this.$slots.slotName()}
+
+        {/* store 调用 */}
+        {/* {`store-token配置：${this.tokenState}`} */}
       </div>
     )
   }
 
-  handleInsert = () => {
-    console.log(this.count)
+  @Emit('countChange')
+  handleInsert() {
     this.count++
-    this.$emit('countChange', this.count)
+    return this.count
+    // this.$emit('countChange', this.count)
   }
 
   @Watch('count')

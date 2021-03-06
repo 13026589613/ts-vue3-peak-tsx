@@ -8,12 +8,12 @@ import { VuexModule, getModule, Module, Mutation, Action } from 'vuex-module-dec
 // type
 export type BaseInfo = Omit<any, 'roles'>
 
-@Module({ namespaced: true, name: 'base', dynamic: true, store })
+@Module({ namespaced: true, name: 'baseStore', dynamic: true, preserveState: false, stateFactory: true, store })
 class BaseStore extends VuexModule {
   private baseInfoState: BaseInfo | null = null
 
   // token
-  private tokenState = ''
+  private tokenState = 'is null'
 
   @Mutation
   commitTokenState(info: string): void {
@@ -24,22 +24,28 @@ class BaseStore extends VuexModule {
    * @description: login
    */
   @Action
-  async login(
+  async changeToken(
     params: any & {
       goHome?: boolean
       mode?: any
     }
   ): Promise<any | null> {
     try {
-      const { goHome = true, mode, ...loginParams } = params
+      // const { goHome = true, mode, ...loginParams } = params
 
-      this.commitTokenState('') // 设置 store - token
+      this.commitTokenState('token') // 设置 store - token
 
       return {}
     } catch (error) {
       return null
     }
   }
+
+  get getTokenState(): string {
+    return this.tokenState
+  }
 }
 
-export const userStore = getModule<BaseStore>(BaseStore)
+export const baseStore = getModule<BaseStore>(BaseStore)
+
+export default baseStore
