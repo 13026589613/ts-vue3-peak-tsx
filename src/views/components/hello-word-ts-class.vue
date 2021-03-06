@@ -4,9 +4,10 @@
     props 参数传递: {{ msg }} <br />
     <button @click="handleInsert">Store 点击记录: {{ count }} </button>
 
-    <!-- store 中 值 -->
-    <br />
-    {{ `store中的值展示：${this.showSpin}` }}
+    <!-- 操作变更&&调用查看 example store 中 的样例值 -->
+    <p @click="handleChangeStoreValue">
+      {{ `store样例值当前：${this.storeExamData} -- ${this.testGetterData} 点击变更` }}
+    </p>
 
     <slot></slot>
   </div>
@@ -18,23 +19,28 @@
   import { Prop } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
 
-  const exampleModule = namespace('baseStore')
+  // 导入example - store 。根据命名空间获取store 数据
+  const exampleModule = namespace('example')
 
   @Options({
     name: 'HelloWorld',
-    components: {},
     emits: ['countChange'],
   })
   export default class extends Vue {
-    @exampleModule.State('tokenState')
-    showSpin!: boolean
+    protected count = 1
 
-    @exampleModule.Action('InitLoginUserInfo')
-    actionInitLoginUserInfo!: (arg: string) => void
+    @exampleModule.State('storeExamData')
+    protected storeExamData!: boolean
 
-    get isCollapse(): boolean {
-      return this.sidebarOpend
-    }
+    @exampleModule.Getter('getTestGetterData')
+    protected testGetterData!: boolean
+
+    @exampleModule.Action('ActionStoreExamData')
+    protected actionStoreExamData: any
+
+    // get isCollapse(): boolean {
+    //   return this.sidebarOpend
+    // }
 
     @Prop({
       type: String,
@@ -43,14 +49,24 @@
     })
     readonly msg!: string
 
-    mounted = onMounted(() => {
-      // this.actionInitLoginUserInfo('')
-    })
+    created() {}
 
-    protected count = 1
-    protected handleInsert = () => {
+    mounted() {}
+
+    /**
+     * @description 累加事件
+     */
+    protected handleInsert() {
       this.count++
       this.$emit('countChange', this.count)
+    }
+
+    /**
+     * @description 操作变更 store 值
+     */
+    handleChangeStoreValue() {
+      const _this = this
+      _this.actionStoreExamData(!this.storeExamData)
     }
   }
 </script>

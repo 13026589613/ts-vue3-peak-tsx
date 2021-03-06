@@ -3,7 +3,7 @@
  */
 import { defineComponent, ref, getCurrentInstance, onMounted } from 'vue'
 import { Vue, Options, prop, mixins } from 'vue-class-component'
-// import { baseStore } from '@/store/modules/base'
+import { baseStore } from '@/store/modules/base'
 
 export default defineComponent({
   name: 'TSXHelloWordComponents',
@@ -31,21 +31,38 @@ export default defineComponent({
         {this.$slots.slotName ? this.$slots.slotName() : null}
 
         {/* store 调用 */}
-        {/* {`store-token配置：${baseStore.getTokenState}`} */}
+        <p onClick={() => this.handleChangeStoreValue(`${new Date().getTime()}`) as any}>
+          {`store-token配置：${baseStore.getTokenState} 点击变更`}
+        </p>
       </div>
     )
   },
 
   setup(_, { emit }) {
     let count = ref(1)
+
+    // mounted
+    onMounted(() => {})
+
+    /**
+     * @description 递增事件
+     */
     const handleInsert = () => {
       count.value++
       emit('countChange', count.value)
     }
 
+    /**
+     * @description 切换baseStore下的token 样例值
+     */
+    const handleChangeStoreValue = (value: string) => {
+      baseStore.ActionChangeToken(value)
+    }
+
     return {
       count,
       handleInsert,
+      handleChangeStoreValue,
     }
   },
 })

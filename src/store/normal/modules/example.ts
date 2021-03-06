@@ -1,4 +1,4 @@
-import { BASE } from '@/store/normal/mutations'
+import { EXAMPLE } from '@/store/normal/mutations'
 
 /**
  * @description 常规 常规 Store 模块 样例
@@ -7,26 +7,28 @@ import { BASE } from '@/store/normal/mutations'
 const exampleStore: any = {
   namespaced: true,
   state: {
-    showSpin: true, // 遮罩控制
+    storeExamData: true, // 遮罩控制
+    testGetterData: 'getterData',
   },
   actions: {
     /**
-     * @description 初始化存储登录用户信息
-     * @param context
+     * @description 切换样例值
+     * @param context {commit}:any
      * @param status
      */
-    InitLoginUserInfo(context: any, userInfo: object) {
-      context.commit(BASE.INIT_LOGIN_USER, userInfo)
+    ActionStoreExamData(context: any, value: boolean): void {
+      context.commit(EXAMPLE.INIT_EXAM_DATA, value)
     },
   },
   mutations: {
-    [BASE.INIT_LOGIN_USER]: (state: any, userInfo: object) => {
-      state.loginUser = userInfo
+    [EXAMPLE.INIT_EXAM_DATA]: (state: any, value: boolean) => {
+      state.storeExamData = value
     },
   },
 
   getters: {
-    showSpin: (state: any): number => state.showSpin,
+    getStoreExamData: (state: any): number => state.storeExamData,
+    getTestGetterData: (state: any): number => state.testGetterData,
   },
 }
 

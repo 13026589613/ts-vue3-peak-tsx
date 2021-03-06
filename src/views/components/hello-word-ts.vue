@@ -9,7 +9,9 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, reactive, ref, unref, toRaw } from 'vue'
+  import { defineComponent, reactive, ref, unref, toRaw, onMounted } from 'vue'
+  import { baseStore } from '@/store/modules/base'
+
   export default defineComponent({
     name: 'HelloWorld',
     components: {},
@@ -23,6 +25,12 @@
 
     setup(_, { emit }) {
       let count = ref(1)
+
+      onMounted(() => {})
+
+      /**
+       * @description 递增事件
+       */
       const handleInsert = () => {
         count.value++
         emit('countChange', count.value)

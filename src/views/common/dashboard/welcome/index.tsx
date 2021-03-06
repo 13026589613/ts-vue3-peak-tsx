@@ -89,6 +89,7 @@ export default class WelcomeComponent extends Vue {
 
           {/* tsx - class 注解模式组件 */}
           <hello-word-class-tsx
+            propsWord={'propsWord参数传递'}
             msg={'tsx - class -msg-props'}
             onCountChange={this.emitCountChange}
             v-slots={{

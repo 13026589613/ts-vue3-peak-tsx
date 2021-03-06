@@ -1,6 +1,11 @@
 /**
  * @description vuex mutations 声明 集合
  */
+// example store 声明
+export const EXAMPLE = {
+  INIT_EXAM_DATA: 'set_exam_data', // 切换样例值
+}
+
 export const BASE = {
   SET_MENU_LIST: 'set_menu_list', // 存储登录用户权限菜单
   ACCESS_TOKEN: 'Access-Token', // 设置交互 token

@@ -29,3 +29,5 @@ export default store // 对外抛出 store 对象
 export function setupStore(app: App<Element>) {
   app.use(store)
 }
+
+console.log(store)

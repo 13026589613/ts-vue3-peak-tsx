@@ -26,7 +26,7 @@ class BaseStore extends VuexModule {
    * @description: login
    */
   @Action
-  async changeToken(
+  async ActionChangeToken(
     params: any & {
       goHome?: boolean
       mode?: any
@@ -34,8 +34,7 @@ class BaseStore extends VuexModule {
   ): Promise<any | null> {
     try {
       // const { goHome = true, mode, ...loginParams } = params
-
-      this.commitTokenState('token') // 设置 store - token
+      this.commitTokenState(params) // 设置 store - token
 
       return {}
     } catch (error) {
