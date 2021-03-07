@@ -5,6 +5,7 @@
 import { defineComponent, ref, getCurrentInstance, onMounted } from 'vue'
 import { Vue, Options } from 'vue-class-component'
 import { useRoute, useRouter } from 'vue-router'
+import axios, { AxiosPromise, AxiosInstance } from 'axios'
 import router from '@/router'
 
 import HelloWord from '@/views/components/hello-word.vue'
@@ -26,6 +27,7 @@ import './index.scss'
   emits: ['countChange'],
 })
 export default class WelcomeComponent extends Vue {
+  mockListData: any[] = []
   dataValue: string | null = '普通路由跳转' // 声明一个data
   dataList: string[] = ['1', '2', '10'] // 声明一个 数组集合 data
   countData: number = 0 // 响应组件反馈的值
@@ -38,7 +40,8 @@ export default class WelcomeComponent extends Vue {
    * @description 初始化加载
    */
   moment: any = onMounted(() => {
-    console.log('初始化加载=--= on-mounted')
+    console.log('初始化加载=--= on-mounted =-= 获取mock 数据 ------- ')
+    this.handleInitMockListData()
   })
 
   /**
@@ -113,6 +116,18 @@ export default class WelcomeComponent extends Vue {
             }}
           ></hello-word-class-tsx>
         </div>
+
+        <h3>5、服务MOCK请求样例</h3>
+        {this.mockListData.length > 0
+          ? this.mockListData?.map((item: any, index: number) => (
+              <div class='example-content'>
+                <span>category：{item.category}</span>&nbsp;&nbsp;
+                <span>codeName：{item.codeName}</span>&nbsp;&nbsp;
+                <span>codeRemark：{item.codeRemark}</span>
+                <br />
+              </div>
+            ))
+          : null}
       </div>
     )
   }
@@ -162,5 +177,28 @@ export default class WelcomeComponent extends Vue {
   emitCountChange(value: number) {
     this.countData = value
     console.log(`响应组件反馈的值--${value}`)
+  }
+
+  /**
+   * @description 演示获取mock 基础list 集合数据
+   *              get 与 post 与mock 的服务配置需要一致
+   */
+  handleInitMockListData() {
+    // get 方式
+    // axios.get('/service/initExampleList', { params: { delFlag: 1 } }).then(data => {
+    //   console.log(data)
+    // })
+    // post 方式
+    axios
+      .post('/service/initExampleList', { data: { delFlag: 2 } })
+      .then(res => res.data)
+      .then(data => {
+        if (data.code === 200) {
+          console.log(data.result)
+          this.mockListData = data.result.list
+        } else {
+          console.log('请求时候数据异常或者没有数据集合')
+        }
+      })
   }
 }

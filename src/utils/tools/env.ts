@@ -48,5 +48,5 @@ export function isProd(): boolean {
  * @example:
  */
 export function useMock(): boolean {
-  return process.env.VITE_USE_MOCK === 'true'
+  return process.env.VUE_APP_USE_MOCK === 'true'
 }

@@ -3,7 +3,7 @@ import router, { setupRouter } from '@/router' // router
 import { setupStore } from '@/store'
 import App from './App' // app 引导首页
 
-import { isDev } from '@/utils/tools/env' // 生产模式
+import { isDev, useMock } from '@/utils/tools/env' // 生产模式
 
 // 初始化创建Vue
 const app = createApp(App)
@@ -23,4 +23,7 @@ router.isReady().then(() => {
 if (isDev()) {
   app.config.performance = true
   window.__APP__ = app
+
+  // 装载mock
+  useMock() ? require('../mock/index') : null
 }
