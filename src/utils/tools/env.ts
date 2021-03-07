@@ -20,7 +20,7 @@ export const prodMode = 'production'
  * @returns:
  * @example:
  */
-export function getEnv(): string {
+export function getProcess(): string {
   return process.env.MODE
 }
 
@@ -29,7 +29,7 @@ export function getEnv(): string {
  * @returns: true 开发环境 false 生产环境
  * @example:
  */
-export function isDevMode(): boolean {
+export function isDev(): boolean {
   return process.env.NODE_ENV === devMode
 }
 
@@ -38,7 +38,7 @@ export function isDevMode(): boolean {
  * @returns: false 开发环境  true 生产环境
  * @example:
  */
-export function isProdMode(): boolean {
+export function isProd(): boolean {
   return process.env.PROD
 }
 
@@ -47,6 +47,6 @@ export function isProdMode(): boolean {
  * @returns:
  * @example:
  */
-export function isUseMock(): boolean {
+export function useMock(): boolean {
   return process.env.VITE_USE_MOCK === 'true'
 }

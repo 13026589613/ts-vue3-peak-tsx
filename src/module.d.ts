@@ -17,6 +17,8 @@ declare module 'fastclick'
 
 declare module 'vuex-class'
 
+declare module 'vue-savedata'
+
 // declare module '@antv/g2plot'
 // declare module 'insert-css'
 // declare module 'electron'

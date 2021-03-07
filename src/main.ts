@@ -3,7 +3,7 @@ import router, { setupRouter } from '@/router' // router
 import { setupStore } from '@/store'
 import App from './App' // app 引导首页
 
-import { isDevMode } from '@/utils/tools/env' // 生产模式
+import { isDev } from '@/utils/tools/env' // 生产模式
 
 // 初始化创建Vue
 const app = createApp(App)
@@ -20,7 +20,7 @@ router.isReady().then(() => {
 })
 
 // 开发环境配置APP config
-if (isDevMode()) {
+if (isDev()) {
   app.config.performance = true
   window.__APP__ = app
 }

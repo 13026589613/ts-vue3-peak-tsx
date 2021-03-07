@@ -4,6 +4,7 @@
 // import { Emit } from 'vue-property-decorator'
 import { defineComponent, ref, getCurrentInstance, onMounted } from 'vue'
 import { Vue, Options } from 'vue-class-component'
+import { useRoute, useRouter } from 'vue-router'
 import router from '@/router'
 
 import HelloWord from '@/views/components/hello-word.vue'
@@ -25,11 +26,13 @@ import './index.scss'
   emits: ['countChange'],
 })
 export default class WelcomeComponent extends Vue {
-  dataValue: string | null = '点击前往登录' // 声明一个data
+  dataValue: string | null = '普通路由跳转' // 声明一个data
   dataList: string[] = ['1', '2', '10'] // 声明一个 数组集合 data
   countData: number = 0 // 响应组件反馈的值
 
-  currentInstance: any = getCurrentInstance() as any
+  currentInstance: any = getCurrentInstance() as any // vue 当前线程对象
+
+  vueRouter = useRouter() // router 操作对象
 
   /**
    * @description 初始化加载
@@ -43,13 +46,24 @@ export default class WelcomeComponent extends Vue {
    */
   render() {
     return (
-      <div>
-        <span onClick={this.handleLogin}>{this.dataValue}</span>
+      <div class='example-wrapper'>
+        <h3>1、路由跳转</h3>
+        <span class='example-content' onClick={() => this.handleRouterLink()}>
+          {this.dataValue}
+        </span>
+
+        <span class='example-content' onClick={() => this.handleRouterLink('params')}>
+          params 传参数
+        </span>
+
+        <span class='example-content' onClick={() => this.handleRouterLink('query')}>
+          query 传参数
+        </span>
 
         {/* 遍历循环事例 */}
-        <p>循环遍历展示</p>
+        <h3>2、循环遍历展示</h3>
         {this.dataList?.map((item: string, index: number) => (
-          <div>
+          <div class='example-content'>
             <span>值：{item}</span>
             <span>索引：{item}</span>
             <br />
@@ -57,11 +71,11 @@ export default class WelcomeComponent extends Vue {
         ))}
 
         {/* 遍历循环事例 */}
-        <p>使用方法 render 渲染内容</p>
+        <h3>3、使用方法 render 渲染内容</h3>
         {this.dataList?.map((item: string, index: number) => this.renderHtml(item, index))}
 
         {/* 组件展示 */}
-        <h3>各类组件和传输等操作展示</h3>
+        <h3>4、不同类型文件的各类组件间参数传输、store、emit、props、slots等操作展示</h3>
         <div class='component-wrapper'>
           {/* 普通 vue 文件组件 */}
           <hello-word msg={'msg-props'}></hello-word>
@@ -108,7 +122,7 @@ export default class WelcomeComponent extends Vue {
    */
   renderHtml(item: string, index: number) {
     return (
-      <div onClick={() => this.handleTargetItem(item)}>
+      <div onClick={() => this.handleTargetItem(item)} class='example-content'>
         <span>值：{item}</span>
         <span>索引：{item}</span>
         <br />
@@ -117,11 +131,21 @@ export default class WelcomeComponent extends Vue {
   }
 
   /**
-   * @description 登录事件
+   * @description 路由跳转演示
+   *              几种传参和跳转调用方式
    */
-  handleLogin = () => {
-    this.currentInstance.ctx.$router.push({ name: 'Workbench' })
-    // router.push({ name: 'Workbench' })
+  handleRouterLink = (type: string = 'normal') => {
+    if (type === 'normal') {
+      this.currentInstance.ctx.$router.push({ name: 'Workbench' })
+    }
+
+    if (type === 'params') {
+      router.push({ name: 'Workbench', params: { myParams: 'myParams' } })
+    }
+
+    if (type === 'query') {
+      this.vueRouter.replace({ name: 'Workbench', query: { myQueryParams: 'myQueryParams' } })
+    }
   }
 
   /**

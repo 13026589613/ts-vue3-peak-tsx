@@ -1,20 +1,31 @@
 /**
  * @description 普通TSX 写法，不使用注解
  */
-import { defineComponent, ref, getCurrentInstance, onMounted } from 'vue'
+import { defineComponent, ref, getCurrentInstance, onMounted, toRaw } from 'vue'
+import { useRoute } from 'vue-router'
+import './index.scss'
+
 export default defineComponent({
   // 采用render 方式渲染
   render() {
     const msg = ref<string>('Vue3 + TypeScript + TSdX')
     return (
-      <div>
-        <div onClick={this.handleRoute}> 返回 welcome 界面</div>
+      <div class='example-wrapper'>
+        <h3>1、路由跳转</h3>
+        <div class='example-content' onClick={this.handleRoute}>
+          {' '}
+          返回 welcome 界面
+        </div>
 
-        <div onClick={this.handleClick}>{msg.value}</div>
+        <h3>2、赋值</h3>
+        <div class='example-content' onClick={this.handleClick}>
+          {msg.value}
+        </div>
 
         {/* 循环遍历 */}
+        <h3>3、遍历循环</h3>
         {this.dataList.map((item: string, index: number) => (
-          <div>
+          <div class='example-content'>
             行内渲染：
             <span>{item}</span> - <span>{index}</span>
             <br />
@@ -22,6 +33,7 @@ export default defineComponent({
         ))}
 
         {/* 循环遍历 */}
+        <h3>4、render 遍历循环</h3>
         {this.dataList.map((item: string, index: number) => this.renderItem(item, index))}
       </div>
     )
@@ -38,7 +50,10 @@ export default defineComponent({
      * @description 初始化加载
      */
     onMounted(() => {
-      console.log(msg.value)
+      console.log('------------------- 获取route ------------------ ')
+      console.log(toRaw(useRoute()))
+      // currentInstance.ctx 相当于 vue2 this
+      console.log(currentInstance.ctx.$router.currentRoute.value)
     })
 
     /**
@@ -48,7 +63,7 @@ export default defineComponent({
      */
     const renderItem = (item: string, index: number) => {
       return (
-        <div onClick={() => handleClickItem(item)}>
+        <div onClick={() => handleClickItem(item)} class='example-content'>
           renderItem 事件：
           <span>{item} --- </span>
           <span>{index}</span>
@@ -65,7 +80,8 @@ export default defineComponent({
 
     // 路由跳转，采用 vue-currentInstance 方式
     const handleTurnBack = () => {
-      currentInstance.ctx.$router.replace({ name: 'Welcome' })
+      // currentInstance.ctx.$router.replace({ name: 'Welcome' })
+      currentInstance.ctx.$router.go(-1)
     }
 
     return {

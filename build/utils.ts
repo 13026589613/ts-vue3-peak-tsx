@@ -1,70 +1,68 @@
-import fs from 'fs';
-import path from 'path';
-import dotenv from 'dotenv';
+import fs from 'fs'
+import path from 'path'
+import dotenv from 'dotenv'
 
-export const isFunction = (arg: unknown): arg is (...args: any[]) => any =>
-  typeof arg === 'function';
+export const isFunction = (arg: unknown): arg is (...args: any[]) => any => typeof arg === 'function'
 
-export const isRegExp = (arg: unknown): arg is RegExp =>
-  Object.prototype.toString.call(arg) === '[object RegExp]';
+export const isRegExp = (arg: unknown): arg is RegExp => Object.prototype.toString.call(arg) === '[object RegExp]'
 
-export function isDevFn(mode: string): boolean {
-  return mode === 'development';
+export function isDev(mode: string): boolean {
+  return mode === 'development'
 }
 
-export function isProdFn(mode: string): boolean {
-  return mode === 'production';
+export function isProd(mode: string): boolean {
+  return mode === 'production'
 }
 
 /**
  * Whether to generate package preview
  */
-export function isReportMode(): boolean {
-  return process.env.REPORT === 'true';
+export function isReport(): boolean {
+  return process.env.REPORT === 'true'
 }
 
 /**
  * Whether to generate gzip for packaging
  */
 export function isBuildGzip(): boolean {
-  return process.env.VITE_BUILD_GZIP === 'true';
+  return process.env.VITE_BUILD_GZIP === 'true'
 }
 
 export interface ViteEnv {
-  VITE_PORT: number;
-  VITE_USE_MOCK: boolean;
-  VITE_USE_PWA: boolean;
-  VITE_PUBLIC_PATH: string;
-  VITE_PROXY: [string, string][];
-  VITE_GLOB_APP_TITLE: string;
-  VITE_GLOB_APP_SHORT_NAME: string;
-  VITE_USE_CDN: boolean;
-  VITE_DROP_CONSOLE: boolean;
-  VITE_BUILD_GZIP: boolean;
-  VITE_DYNAMIC_IMPORT: boolean;
-  VITE_LEGACY: boolean;
-  VITE_USE_IMAGEMIN: boolean;
+  VITE_PORT: number
+  VITE_USE_MOCK: boolean
+  VITE_USE_PWA: boolean
+  VITE_PUBLIC_PATH: string
+  VITE_PROXY: [string, string][]
+  VITE_GLOB_APP_TITLE: string
+  VITE_GLOB_APP_SHORT_NAME: string
+  VITE_USE_CDN: boolean
+  VITE_DROP_CONSOLE: boolean
+  VITE_BUILD_GZIP: boolean
+  VITE_DYNAMIC_IMPORT: boolean
+  VITE_LEGACY: boolean
+  VITE_USE_IMAGEMIN: boolean
 }
 
 // Read all environment variable configuration files to process.env
 export function wrapperEnv(envConf: any): ViteEnv {
-  const ret: any = {};
+  const ret: any = {}
 
   for (const envName of Object.keys(envConf)) {
-    let realName = envConf[envName].replace(/\\n/g, '\n');
-    realName = realName === 'true' ? true : realName === 'false' ? false : realName;
+    let realName = envConf[envName].replace(/\\n/g, '\n')
+    realName = realName === 'true' ? true : realName === 'false' ? false : realName
     if (envName === 'VITE_PORT') {
-      realName = Number(realName);
+      realName = Number(realName)
     }
     if (envName === 'VITE_PROXY') {
       try {
-        realName = JSON.parse(realName);
+        realName = JSON.parse(realName)
       } catch (error) {}
     }
-    ret[envName] = realName;
-    process.env[envName] = realName;
+    ret[envName] = realName
+    process.env[envName] = realName
   }
-  return ret;
+  return ret
 }
 
 /**
@@ -73,21 +71,21 @@ export function wrapperEnv(envConf: any): ViteEnv {
  * @param confFiles ext
  */
 export function getEnvConfig(match = 'VITE_GLOB_', confFiles = ['.env', '.env.production']) {
-  let envConfig = {};
-  confFiles.forEach((item) => {
+  let envConfig = {}
+  confFiles.forEach(item => {
     try {
-      const env = dotenv.parse(fs.readFileSync(path.resolve(process.cwd(), item)));
+      const env = dotenv.parse(fs.readFileSync(path.resolve(process.cwd(), item)))
 
-      envConfig = { ...envConfig, ...env };
+      envConfig = { ...envConfig, ...env }
     } catch (error) {}
-  });
-  Object.keys(envConfig).forEach((key) => {
-    const reg = new RegExp(`^(${match})`);
+  })
+  Object.keys(envConfig).forEach(key => {
+    const reg = new RegExp(`^(${match})`)
     if (!reg.test(key)) {
-      Reflect.deleteProperty(envConfig, key);
+      Reflect.deleteProperty(envConfig, key)
     }
-  });
-  return envConfig;
+  })
+  return envConfig
 }
 
 /**
@@ -95,5 +93,5 @@ export function getEnvConfig(match = 'VITE_GLOB_', confFiles = ['.env', '.env.pr
  * @param dir file path
  */
 export function getCwdPath(...dir: string[]) {
-  return path.resolve(process.cwd(), ...dir);
+  return path.resolve(process.cwd(), ...dir)
 }

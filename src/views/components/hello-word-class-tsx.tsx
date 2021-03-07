@@ -47,6 +47,7 @@ export default class TSXClassComponent extends Vue {
   private propsWord?: string
 
   moment: any = onMounted(() => {
+    console.log('----------------- slots操作 ------------------')
     console.log(this.$slots)
   })
 

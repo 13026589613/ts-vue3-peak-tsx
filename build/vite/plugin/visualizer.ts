@@ -1,12 +1,12 @@
-import visualizer from 'rollup-plugin-visualizer';
-import { isReportMode } from '../../utils';
+import visualizer from 'rollup-plugin-visualizer'
+import { isReport } from '../../utils'
 
 export function configVisualizerConfig() {
-  if (isReportMode()) {
+  if (isReport()) {
     return visualizer({
       filename: './node_modules/.cache/visualizer/stats.html',
       open: true,
-    }) as Plugin;
+    }) as Plugin
   }
-  return [];
+  return []
 }
