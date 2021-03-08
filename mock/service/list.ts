@@ -9,9 +9,8 @@ const { getQueryParameters, getBody, builder } = require('../utils')
  * @description list mock 样例
  * @params 检索条件 查询参数
  */
-let listBase = []
 const initExampleList = params => {
-  listBase = []
+  let listBase = []
   const queryParams = params.type === 'POST' ? getBody(params) : getQueryParameters(params)
 
   for (let index = 0; index < 99; index++) {
@@ -34,7 +33,13 @@ const initExampleList = params => {
   }
 
   const { data } = queryParams // 查询参数位置
-  const base = listBase.filter(item => (data ? item.delFlag.indexOf(data.delFlag) > 0 : item))
+  let base = []
+  if (queryParams.delFlag) {
+    console.log(queryParams.delFlag)
+    base = listBase.filter(item => item.delFlag.indexOf(queryParams.delFlag) > 0)
+  } else {
+    base = listBase.filter(item => (data ? item.delFlag.indexOf(data.delFlag) > 0 : item))
+  }
 
   if (base && base.length > 0) {
     return builder(

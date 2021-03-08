@@ -1,8 +1,9 @@
 import qs from 'qs'
 import merge from 'lodash/merge'
 import cloneDeep from 'lodash/cloneDeep'
-import axiosAPI from './axios' // 导入axios对象
-import APIS from './modules'
+import { AxiosClass } from './axios' // 导入axios对象
+import APIS from '@/api/modules'
+import { ContentType } from '@/api/plugins/libs/request.type' // 枚举常量
 
 export default class Api {
   // 对外 api 接口函数
@@ -25,7 +26,13 @@ export default class Api {
 
   // 构造器 options: Options
   constructor() {
-    this.service = axiosAPI
+    this.service = new AxiosClass({
+      timeout: 1000 * 30,
+      withCredentials: true,
+      headers: {
+        'Content-Type': ContentType.JSON_TYPE,
+      },
+    }).getRequest()
   }
 
   /**
@@ -85,7 +92,9 @@ export default class Api {
     return (
       (process.env.NODE_ENV !== 'production' && typeof process.env.OPEN_PROXY !== 'undefined' && process.env.OPEN_PROXY
         ? '/proxyApi/'
-        : baseUrl || window.config.baseUrl) + actionURL
+        : baseUrl) + actionURL
+
+      //  || window.config.baseUrl
     )
   }
 
@@ -156,6 +165,7 @@ export default class Api {
    */
   _post = (options: Options) => {
     const { url = '', data, headers } = options
+    console.log(data)
     const requestURL = this.mergeUrl(url, options.baseUrl)
     const params = this.mergeData(data, options.openDefaultParams, options.contentType, options.listParams)
 

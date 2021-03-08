@@ -4,6 +4,7 @@ import { setupStore } from '@/store'
 import App from './App' // app 引导首页
 
 import { isDev, useMock } from '@/utils/tools/env' // 生产模式
+import { initApi } from '@/config/plugins/tools/axios'
 
 // 初始化创建Vue
 const app = createApp(App)
@@ -13,6 +14,9 @@ setupRouter(app)
 
 // 装载Store
 setupStore(app)
+
+// 装载 axios - modules 对象集合
+initApi(app)
 
 // 路由加载完成，初始化引导首页
 router.isReady().then(() => {

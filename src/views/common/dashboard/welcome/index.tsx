@@ -27,7 +27,8 @@ import './index.scss'
   emits: ['countChange'],
 })
 export default class WelcomeComponent extends Vue {
-  mockListData: any[] = []
+  mockListData: any[] = [] // mock-list
+  mockAxiosListData: any[] = [] // mock-axios-list
   dataValue: string | null = '普通路由跳转' // 声明一个data
   dataList: string[] = ['1', '2', '10'] // 声明一个 数组集合 data
   countData: number = 0 // 响应组件反馈的值
@@ -128,6 +129,18 @@ export default class WelcomeComponent extends Vue {
               </div>
             ))
           : null}
+
+        <h3>6、AXIOS请求 - 服务MOCK请求样例</h3>
+        {this.mockAxiosListData.length > 0
+          ? this.mockAxiosListData?.map((item: any, index: number) => (
+              <div class='example-content'>
+                <span>category：{item.category}</span>&nbsp;&nbsp;
+                <span>codeName：{item.codeName}</span>&nbsp;&nbsp;
+                <span>codeRemark：{item.codeRemark}</span>
+                <br />
+              </div>
+            ))
+          : null}
       </div>
     )
   }
@@ -184,6 +197,7 @@ export default class WelcomeComponent extends Vue {
    *              get 与 post 与mock 的服务配置需要一致
    */
   handleInitMockListData() {
+    // mock axios源对象 请求
     // get 方式
     // axios.get('/service/initExampleList', { params: { delFlag: 1 } }).then(data => {
     //   console.log(data)
@@ -194,11 +208,21 @@ export default class WelcomeComponent extends Vue {
       .then(res => res.data)
       .then(data => {
         if (data.code === 200) {
-          console.log(data.result)
           this.mockListData = data.result.list
         } else {
           console.log('请求时候数据异常或者没有数据集合')
         }
+      })
+
+    // 通过封装axios 对象获取数据
+    this.currentInstance.ctx.$ModuleApis.demo
+      .initExampleList({
+        data: {
+          delFlag: 2,
+        },
+      })
+      .then((res: any) => {
+        this.mockAxiosListData = res.result.list
       })
   }
 }

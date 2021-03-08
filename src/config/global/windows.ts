@@ -2,7 +2,7 @@
  * @description 系统全局性参数配置
  * @author PP
  */
-import { API_TYPE, LS } from '@/config/plugins/tools/enum' // 导入枚举配置
+import { API_TYPE, LS } from '@/enum/enum' // 导入枚举配置
 import '@/config/plugins/const' // 导入常量数据
 
 /**

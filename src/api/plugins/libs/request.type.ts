@@ -18,10 +18,10 @@ export enum PromptStyleType {
   ERROR = 'error',
 }
 
-// Http 请求content-type
+// Http 请求content-type -- ;charset=UTF-8
 export enum ContentType {
-  JSON_TYPE = 'application/json;charset=UTF-8',
-  FORM_TYPE = 'application/x-www-form-urlencoded;charset=UTF-8',
+  JSON_TYPE = 'application/json',
+  FORM_TYPE = 'application/x-www-form-urlencoded',
   UPLOAD_TYPE = 'multipart/form-data',
-  FILE_OUT_TYPE = 'application/octet-stream;charset=UTF-8',
+  FILE_OUT_TYPE = 'application/octet-stream',
 }
