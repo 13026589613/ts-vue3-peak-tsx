@@ -3,8 +3,9 @@ import Api from '@/api/plugins/index' // 导入 axios api
 import { API_TYPE } from '@/enum/enum' // 导入枚举配置
 
 /**
- * @description 构造 axios - api 对象
- * @param app
+ * @description 构造 axios - 封装成 可调用的 api 对象
+ *              也可以不采用该方式，通过import 导入对象的方式引入 api
+ * @param app vue 对象
  */
 export function initApi(app: App) {
   const API_ALL_TYPE = API_TYPE.enum.ALL.label
@@ -19,7 +20,7 @@ export function initApi(app: App) {
 
   /**
    * @description 全局注册api
-   * 启用需要预先配置url、method、header等options参数，调用只传递data
+   *              启用需要预先配置url、method、header等options参数，调用只传递data
    */
   if (API_ALL_TYPE === process.env.VUE_APP_API_TYPE || API_TYPE.enum.LIST.label === process.env.VUE_APP_API_TYPE) {
     axiosAPI.initApis()
@@ -29,7 +30,7 @@ export function initApi(app: App) {
 
   /**
    * @description 全局注册 modules api
-   * 启用需要预先配置url、method、header等options参数，调用只传递data
+   *              启用需要预先配置url、method、header等options参数，调用只传递data
    */
   if (
     API_ALL_TYPE === process.env.VUE_APP_API_TYPE ||
