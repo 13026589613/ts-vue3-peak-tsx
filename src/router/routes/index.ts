@@ -1,5 +1,4 @@
 import type { AppRouteRecordRaw, AppRouteModule } from '@/router/libs/types'
-import { PageEnum } from '@/enum/pageEnum'
 
 /**
  * @description 遍历文件夹加载路由模块文件 routers - modules 文件
@@ -23,30 +22,9 @@ Object.keys(RoutersModules).forEach((key: any) => {
   }
 })
 
-const _import = require(`@/router/import/import_${process.env.NODE_ENV}`)
-
-// 主路由对象
-export const RootRoute: AppRouteRecordRaw = {
-  path: '/',
-  name: 'Root',
-  redirect: PageEnum.BASE_HOME,
-  meta: {
-    title: 'Root',
-  },
-}
-
-// 登录路由
-export const LoginRoute: AppRouteRecordRaw = {
-  path: '/login',
-  name: 'Login',
-  component: _import('common/login/index.vue'),
-  // component: require('common/login/Login'),
-  meta: {
-    title: 'routes.basic.login',
-  },
-}
+console.log(RouteModuleList)
 
 /**
  * @description 抛出路由集合对象
  */
-export const basicRoutes = [LoginRoute, RootRoute, ...RouteModuleList]
+export const basicRoutes = [...RouteModuleList]

@@ -119,7 +119,7 @@
       //判断是否有token 如果有则直接去首页
       let token = Cookies.get('token') || null
       if (token) {
-        this.$router.replace({ name: 'home' })
+        // router.push({ name: PageEnum.BASE_HOME_NAME })
       }
     },
     mounted() {
