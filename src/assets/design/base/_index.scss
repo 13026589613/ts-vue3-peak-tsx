@@ -7,11 +7,11 @@
 @import 'transition'; // 自定义动画、特效配置
 
 #app {
-  @extend .full-container-size;
   position: relative;
   top: 0;
   left: 0;
   z-index: 1;
+  @extend .full-container-size;
 }
 
 .base-table-wrap,
@@ -22,8 +22,8 @@
 
 .base-table-wrap .filter-table-wrapper,
 .flex-table-wrapper .filter-table-wrapper {
-  display: flex;
   flex-direction: column;
+  display: flex;
 }
 
 // 编辑表格+表单的drawer层样式。要素字典部分样式

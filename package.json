@@ -5,17 +5,20 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
+
     "lint": "vue-cli-service lint",
-    "bootstrap": "yarn install",
-    "typecheck": "vuedx-typecheck .",
     "lint:eslint": "eslint \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
     "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
-    "lint:stylelint": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
-    "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
+    "lint:style:lint": "stylelint --fix \"src/**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+
+    "check:type": "vuedx-typecheck .",
+    "reset:install": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && yarn install",
+
     "jenkins-serve": "node ./z-generate/z-node-serve-build.js",
     "generate-serve": "node ./z-generate/serve/node-api-serve.js",
-    "node-serve": "node ./z-node-local-server.js -- product_name=MG-TS-VUE-BACK-CLI/dist product_host=8100",
-    "g-serve": "concurrently \"npm run vue-serve\" \"npm run generate-serve\" "
+
+    "g-serve": "concurrently \"npm run vue-serve\" \"npm run generate-serve\" ",
+    "node-serve": "node ./z-node-local-server.js -- product_name=MG-TS-VUE-BACK-CLI/dist product_host=8100"
   },
   "dependencies": {
     "core-js": "^3.6.5",
