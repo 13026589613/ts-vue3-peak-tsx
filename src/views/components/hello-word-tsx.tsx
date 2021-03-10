@@ -21,16 +21,26 @@ export default defineComponent({
     return (
       <div>
         <div>
-          <h1>TSX组件</h1>
+          <h3>TSX组件</h3>
+          <p>
+            <b>一、prop 和 data 赋值</b>
+          </p>
           props 参数传递: {this.msg}
           <br />
           默认文字显示：{defaultString.value}
         </div>
+
+        <p>
+          <b>二、点击事件</b>
+        </p>
         <button onClick={this.handleInsert}>Store 点击记录: {this.count} </button>
 
         {this.$slots.slotName ? this.$slots.slotName() : null}
 
         {/* store 调用 */}
+        <p>
+          <b>三、store 变更事件</b>
+        </p>
         <p onClick={() => this.handleChangeStoreValue(`${new Date().getTime()}`) as any}>
           {`store-token配置：${baseStore.getTokenState} 点击变更`}
         </p>

@@ -120,7 +120,7 @@ export default class WelcomeComponent extends Vue {
           ></hello-word-class-tsx>
         </div>
 
-        <h3>5、服务MOCK请求样例</h3>
+        <h3>5、服务MOCK 普通axios 服务请求样例</h3>
         {this.mockListData.length > 0
           ? this.mockListData?.map((item: any, index: number) => (
               <div class='example-content'>
@@ -132,7 +132,7 @@ export default class WelcomeComponent extends Vue {
             ))
           : null}
 
-        <h3>6、AXIOS请求 - 服务MOCK请求样例</h3>
+        <h3>6、AXIOS封装后请求 - 服务MOCK请求样例</h3>
         {this.mockAxiosListData.length > 0
           ? this.mockAxiosListData?.map((item: any, index: number) => (
               <div class='example-content'>

@@ -60,8 +60,8 @@ export default class TSXClassComponent extends Vue {
     return (
       <div>
         <div>
-          <h1>TSX - class 组件</h1>
-          props 参数传递:
+          <h3>TSX - class 组件</h3>
+          <b>一、props 参数传递:</b>
           <br />
           参数 1 ：{this.msg}
           <br />
@@ -69,20 +69,30 @@ export default class TSXClassComponent extends Vue {
           <br />
           参数 3 ： {this.propsWord}
           <br />
-          默认文字显示：{defaultString.value} ｜｜ {this.dataValue}
+          <b>二、默认文字显示：</b>
+          {defaultString.value} ｜｜ {this.dataValue}
         </div>
 
+        <p>
+          <b>三、按钮点击事件</b>
+        </p>
         <button onClick={this.handleInsert}>Store 点击记录: {this.count} </button>
 
         {/* 插槽 */}
         {this.$slots.slotName()}
 
         {/* 注解式 base - store 调用 */}
+        <p>
+          <b>四、store 变更事件 方法1</b>
+        </p>
         <p onClick={() => this.actionChangeBaseStoreValue(`${new Date().getTime()}`) as any}>
           {`store-token配置：${baseStore.getTokenState} 点击变更`}
         </p>
 
         {/* 操作变更&&调用查看 example store 中 的样例值 */}
+        <p>
+          <b>五、store变更事件 方法2</b>
+        </p>
         <p onClick={this.actionChangeExampleStoreValue}>
           {`store样例值当前：${this.storeExamData} -- ${this.testGetterData} 点击变更`}
         </p>

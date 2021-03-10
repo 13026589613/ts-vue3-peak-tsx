@@ -1,7 +1,10 @@
 <template>
   <div>
-    <h1>ts vue 文件 组件 </h1>
-    props 参数传递: {{ msg }} <br />
+    <h3>ts vue 文件 组件 </h3>
+    <b>一、props 参数传递: </b>{{ msg }} <br />
+    <p>
+      <b>二、点击事件</b>
+    </p>
     <button @click="handleInsert">Store 点击记录: {{ count }} </button>
 
     <slot></slot>

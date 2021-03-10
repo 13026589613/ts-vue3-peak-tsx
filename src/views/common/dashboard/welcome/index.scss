@@ -1,19 +1,35 @@
-.component-wrapper {
-  display: flex;
-  flex-direction: row;
+.example-wrapper {
+  height: 100%;
+  overflow-y: auto;
 
-  & > div {
-    flex: 1;
-    padding: 0 10px;
+  h3 {
+    padding-left: 10px;
+    margin: 20px 0;
+  }
+
+  .example-content {
+    // display: inline-block;
+    padding: 15px 30px;
     margin: 0 10px;
-    text-align: center;
     background-color: #f5f5f5;
   }
-}
 
-.example-content {
-  display: inline-block;
-  padding: 15px 30px;
-  margin: 0 10px;
-  background-color: #f5f5f5;
+  .component-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    & > div {
+      flex: 1;
+      padding: 0 10px;
+      margin: 0 10px;
+      text-align: left;
+      background-color: #f5f5f5;
+      line-height: 30px;
+
+      h3 {
+        text-align: center;
+        font-size: 20px;
+      }
+    }
+  }
 }

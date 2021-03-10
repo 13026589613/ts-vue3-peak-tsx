@@ -1,10 +1,16 @@
 <template>
   <div>
-    <h1>ts vue class 文件 组件 </h1>
-    props 参数传递: {{ msg }} <br />
+    <h3>ts vue class 文件 组件 </h3>
+    <b>一、props 参数传递: </b>{{ msg }} <br />
+    <p>
+      <b>二、点击事件</b>
+    </p>
     <button @click="handleInsert">Store 点击记录: {{ count }} </button>
 
     <!-- 操作变更&&调用查看 example store 中 的样例值 -->
+    <p>
+      <b>三、vue文件store变更事件</b>
+    </p>
     <p @click="handleChangeStoreValue">
       {{ `store样例值当前：${this.storeExamData} -- ${this.testGetterData} 点击变更` }}
     </p>
