@@ -4,11 +4,13 @@
  *              采用注入式，store 会自动检测并填充 state、modules、getters。注入后可采用 对象化调用或者vue-class 注入式获取值
  * @author PP
  */
-require
-  .context('./', true, /.ts$/)
-  .keys()
-  .forEach(fileName => {
-    if (fileName.indexOf('index') === -1) {
-      import(`${fileName}`)
-    }
-  })
+export function initStores() {
+  require
+    .context('./', true, /.ts$/)
+    .keys()
+    .forEach(fileName => {
+      if (fileName.indexOf('index') === -1) {
+        import(`${fileName}`)
+      }
+    })
+}

@@ -100,9 +100,9 @@
     data() {
       return {
         loginForm: {
-          username: null,
-          password: null,
-          captcha: null,
+          username: 'admin',
+          password: 'admin',
+          captcha: 'captcha',
         },
         codeImage: null,
         uuidTime: 0,

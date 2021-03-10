@@ -11,7 +11,7 @@ import { isDev } from '@/utils/tools/env'
  */
 import normalModules from '@/store/normal/modules' // 普通模式 - 注入所有的normal常规模式的store
 import getters from '@/store/normal/getters' // 普通模式 - 可以采用getters 的集中化管理注入
-import '@/store/modules/index' // 注入式 store - import 引用全部store - modules 包源。也可以不按需引入，store会自动检测填充
+import { initStores } from '@/store/modules' // 注入式 store - import 引用全部store - modules 包源。也可以不按需引入，store会自动检测填充
 
 // 默认在所有@Action装饰器上将rawError设置为true
 config.rawError = true
@@ -37,4 +37,5 @@ export default store // 对外抛出 store 对象
 // vue 捆绑设置 store
 export function setupStore(app: App<Element>) {
   app.use(store)
+  initStores() // 全局性引入stores
 }

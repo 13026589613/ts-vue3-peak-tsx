@@ -1,7 +1,7 @@
 import { PageEnum } from '@/enum/pageEnum'
 
 /**
- * @description 基础配置路由
+ * @description 系统基础主配置路由
  */
 const _import = require(`@/router/import/import_${process.env.NODE_ENV}`)
 

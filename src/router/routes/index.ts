@@ -1,4 +1,4 @@
-import type { AppRouteRecordRaw, AppRouteModule } from '@/router/libs/types'
+import type { AppRouteModule } from '@/router/libs/types'
 
 /**
  * @description 遍历文件夹加载路由模块文件 routers - modules 文件
@@ -21,8 +21,6 @@ Object.keys(RoutersModules).forEach((key: any) => {
     }
   }
 })
-
-console.log(RouteModuleList)
 
 /**
  * @description 抛出路由集合对象
