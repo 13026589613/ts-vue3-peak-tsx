@@ -48,5 +48,6 @@ export function isProd(): boolean {
  * @example:
  */
 export function useMock(): boolean {
-  return process.env.VUE_APP_USE_MOCK === 'true'
+  // 是否启用mock 数据
+  return process.env.VUE_APP_USE_MOCK === 'true' && process.env.NODE_ENV === 'development'
 }

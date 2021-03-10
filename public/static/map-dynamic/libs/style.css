@@ -16,32 +16,38 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-    margin: 0;
     padding: 0;
-    border: 0;
-    font-size: 100%;
+    margin: 0;
     font: inherit;
+    font-size: 100%;
     vertical-align: baseline;
+    border: 0;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
+
 body {
     line-height: 1;
 }
+
 ol, ul {
     list-style: none;
 }
+
 blockquote, q {
     quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote::before, blockquote::after,
+q::before, q::after {
     content: '';
     content: none;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -49,34 +55,34 @@ table {
 
 body {
     font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
-    color: #666;
     line-height: 1.5em;
+    color: #666;
 }
 
 .wrapper {
     max-width: 800px;
-    margin: auto;
     padding: 80px 20px 30px;
+    margin: auto;
 }
 
 h1 {
-    text-align: center;
-    font-size: 32px;
-    color: #444;
     margin-bottom: 30px;
+    font-size: 32px;
     line-height: 1.5em;
+    color: #444;
+    text-align: center;
 }
 
 h2 {
-    font-size: 24px;
-    color: #444;
     margin-bottom: 20px;
+    font-size: 24px;
     line-height: 1.5em;
+    color: #444;
 }
 
 p {
-    font-size: 16px;
     margin-bottom: 20px;
+    font-size: 16px;
 }
 
 ul li {
@@ -84,15 +90,15 @@ ul li {
 }
 
 .menu-button {
-    display: block;
     position: absolute;
     top: 20px;
     left: 20px;
-    background: url(menu.gif) no-repeat;
-    overflow: hidden;
+    display: block;
     width: 34px;
     height: 31px;
+    overflow: hidden;
     text-indent: -9999px;
+    background: url(menu.gif) no-repeat;
 }
 
 .menu-button.right {
@@ -112,14 +118,14 @@ ul li {
     position: absolute;
     position: fixed;
     top: 0;
-    left: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999998;
+    display: none;
     width: 100%;
     height: 100%;
     background: transparent;
-    z-index: 999998;
-    display: none;
 }
 
 .sidr-open #overlay {
@@ -138,4 +144,5 @@ ul li {
 .sidr.right.fullwidth {
     right: -100%;
 }
+
 /* END Settings for fullwidth */

@@ -15,13 +15,19 @@ module.exports = {
         ignoreAtRules: ['function', 'if', 'each', 'include', 'mixin'],
       },
     ],
+    'declaration-block-trailing-semicolon': [
+      null,
+      {
+        ignore: ['single-declaration'],
+      },
+    ],
+    'declaration-empty-line-before': null,
     'no-empty-source': null,
     'unicode-bom': 'never',
     'no-descending-specificity': null,
     'font-family-no-missing-generic-family-keyword': null,
-    'declaration-colon-space-after': 'always-single-line',
+    'declaration-colon-space-after': 'always',
     'declaration-colon-space-before': 'never',
-    'declaration-block-trailing-semicolon': 'always',
     'rule-empty-line-before': [
       'always',
       {
@@ -178,4 +184,4 @@ module.exports = {
       'speak',
     ],
   },
-};
+}

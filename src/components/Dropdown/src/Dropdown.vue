@@ -18,12 +18,12 @@
 </template>
 
 <script lang="ts">
-  import type { PropType } from 'vue';
-  import type { DropMenu } from './types';
+  import { PropType } from 'vue'
+  import { DropMenu } from './types'
 
-  import { defineComponent, computed, unref } from 'vue';
-  import { Dropdown, Menu } from 'ant-design-vue';
-  import Icon from '/@/components/Icon/index';
+  import { defineComponent, computed, unref } from 'vue'
+  import { Dropdown, Menu } from 'ant-design-vue'
+  import Icon from '@/components/Icon/index'
 
   export default defineComponent({
     name: 'BasicDropdown',
@@ -43,7 +43,7 @@
       trigger: {
         type: [Array] as PropType<string[]>,
         default: () => {
-          return ['contextmenu'];
+          return ['contextmenu']
         },
       },
       dropMenuList: {
@@ -57,16 +57,16 @@
     },
     emits: ['menuEvent'],
     setup(props, { emit }) {
-      const getMenuList = computed(() => props.dropMenuList);
+      const getMenuList = computed(() => props.dropMenuList)
 
       function handleClickMenu(item: DropMenu) {
-        const { event } = item;
-        const menu = unref(getMenuList).find((item) => `${item.event}` === `${event}`);
-        emit('menuEvent', menu);
-        item.onClick?.();
+        const { event } = item
+        const menu = unref(getMenuList).find(item => `${item.event}` === `${event}`)
+        emit('menuEvent', menu)
+        item.onClick ? item.onClick() : null
       }
 
-      return { handleClickMenu, getMenuList };
+      return { handleClickMenu, getMenuList }
     },
-  });
+  })
 </script>

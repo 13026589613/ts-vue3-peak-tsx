@@ -7,4 +7,6 @@ export enum PageEnum {
   ERROR_PAGE = '/exception',
   // error log page path
   ERROR_LOG_PAGE = '/feat/error-log',
+
+  BASE_HOME_NAME = 'Home',
 }

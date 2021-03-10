@@ -1,0 +1,157 @@
+/*  ----------------- CSS -------------  */
+@import 'normalize'; // 不同的浏览器在渲染网页元素，统一CSS形式 api: https://github.com/necolas/normalize.css/
+@import 'variables'; // 站点变量配置
+@import 'common'; // 公用属性配置
+@import 'component_ant'; // ant-vue 属性配置
+@import 'base'; // 基础属性配置
+@import 'transition'; // 自定义动画、特效配置
+
+#app {
+  @extend .full-container-size;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.base-table-wrap,
+.filter-table-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.base-table-wrap .filter-table-wrapper,
+.flex-table-wrapper .filter-table-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+// 编辑表格+表单的drawer层样式。要素字典部分样式
+.data-form-drawer {
+  .left-label-form-item {
+    .ant-form-item-label {
+      // text-align: left;
+    }
+  }
+
+  // 头部标题引导
+  .tip-header {
+    position: relative;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+
+    &::before {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 0;
+      width: 3px;
+      background-color: red;
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+      content: '';
+    }
+  }
+
+  // 头部标题引导
+  .tip-info-header {
+    position: relative;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+
+    &::before {
+      position: absolute;
+      top: 4px;
+      bottom: 14px;
+      left: 0;
+      width: 3px;
+      background-color: #1890ff;
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+      content: '';
+    }
+
+    &:first-child {
+      border-top: 0;
+    }
+  }
+
+  // 弹窗容器
+  .ant-drawer-content {
+    background-color: #f3f3f3;
+
+    .ant-drawer-body {
+      max-width: 800px;
+      padding: 10px;
+      padding-bottom: 50px;
+      margin: 0 auto;
+
+      .fixed-btn-wrapper {
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+        width: 780px;
+        padding: 12px 20px;
+        background-color: #f9f9f9;
+        border-top: 1px solid #ddd;
+        justify-content: flex-end;
+        border-radius: 3px;
+
+        .ant-btn {
+          width: 25%;
+        }
+      }
+    }
+  }
+
+  // 步数控件
+  .step-content-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+
+    .form-step-wrapper {
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+
+    .config-wrapper {
+      width: 100%;
+      padding-bottom: 20px;
+      overflow: scroll;
+      background: #fff;
+      flex: 1;
+    }
+  }
+
+  // 表单配置
+  .base-form-row {
+    padding: 15px;
+    padding-bottom: 0;
+    margin: 0 !important;
+    margin-bottom: 10px !important;
+    background-color: #fff;
+    border-radius: 5px;
+
+    .col-data-type {
+      margin-bottom: 10px;
+    }
+
+    .left-label-form-item {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+// @page {
+//   margin: 0;
+//   size: auto;
+// }

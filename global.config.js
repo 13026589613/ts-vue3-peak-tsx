@@ -6,9 +6,9 @@ module.exports = {
   /**
    * @description 项目名称
    */
-  project_name: 'TS-ANTD 科润管理端',
+  project_name: 'TS-ANTD 管理端',
   /**
    * @description 系统名称
    */
-  system_name: 'TS-ANTD 科润管理端',
+  system_name: 'TS-ANTD 管理端',
 }

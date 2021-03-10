@@ -1,0 +1,87 @@
+/*  ----------------- HTML Elments CSS Utils ------------- */
+.full-container-size {
+  width: 100%;
+  height: 100%;
+}
+
+// *,
+// *::before,
+// *::after {
+//   box-sizing: border-box;
+// }
+
+html,
+body {
+  @extend .full-container-size;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, 'Helvetica Neue', Helvetica,
+    sans-serif;
+  font-size: 14px;
+  color: #303133;
+  background-color: #fff;
+}
+
+/*  ----------------- Base Element Utils ------------- */
+a {
+  color: mix(#fff, $--color-primary, 20%);
+  text-decoration: none !important;
+
+  &:focus,
+  &:hover {
+    color: $--color-primary;
+    text-decoration: underline;
+  }
+}
+
+img {
+  vertical-align: middle;
+}
+
+li {
+  list-style: none;
+}
+
+/*  ----------------- Float && Clearfix Utils ------------- */
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+.clearfix::before,
+.clearfix::after {
+  display: table;
+  content: ' ';
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/*  ----------------- Clearfix Utils Ends ------------- */
+
+/*  ----------------- Layout Starts ------------- */
+.scroll-auto-content,
+.right-content-wrapper {
+  // @extend .scrollbar
+}
+
+.hide-class {
+  display: none;
+}
+
+.block-class {
+  display: block;
+}
+
+.anchorBL {
+  display: none;
+}

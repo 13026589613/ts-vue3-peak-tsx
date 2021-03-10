@@ -15,7 +15,7 @@ const exampleModule = namespace('example')
 // 定义props 参数
 const PropsInfo = prop({
   msg: {
-    type: Number,
+    type: String,
     required: true,
     default: '默认参数',
   },

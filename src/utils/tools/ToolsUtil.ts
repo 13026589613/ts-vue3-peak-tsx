@@ -281,7 +281,7 @@ const toolsUtil = {
      * @description 根据某个值的大小排序
      */
     sortByKey(array: Array<any>, key: number | string) {
-      return array.sort(function(a, b) {
+      return array.sort(function (a, b) {
         var x = a[key]
         var y = b[key]
         return x < y ? -1 : x > y ? 1 : 0
@@ -334,7 +334,7 @@ const toolsUtil = {
           if (!temp[data[k][pid]].children) {
             temp[data[k][pid]].children = []
           }
-          if(!temp[data[k][pid]].list){
+          if (!temp[data[k][pid]].list) {
             temp[data[k][pid]].list = []
           }
 

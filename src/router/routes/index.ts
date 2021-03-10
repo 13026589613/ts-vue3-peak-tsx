@@ -23,6 +23,8 @@ Object.keys(RoutersModules).forEach((key: any) => {
   }
 })
 
+const _import = require(`@/router/import/import_${process.env.NODE_ENV}`)
+
 // 主路由对象
 export const RootRoute: AppRouteRecordRaw = {
   path: '/',
@@ -37,7 +39,8 @@ export const RootRoute: AppRouteRecordRaw = {
 export const LoginRoute: AppRouteRecordRaw = {
   path: '/login',
   name: 'Login',
-  component: require('@/views/common/login/Login'),
+  component: _import('common/login/index.vue'),
+  // component: require('common/login/Login'),
   meta: {
     title: 'routes.basic.login',
   },

@@ -1,5 +1,5 @@
 import type { App } from 'vue'
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import { basicRoutes } from './routes/' // 加载路由模块
 import { scrollBehavior } from '@/router/libs/scrollBehavior' // 加载滚动行为控制
 import { initGuard } from '@/router/routes/guard' // 路由导航守卫行为事件
@@ -7,7 +7,8 @@ import { REDIRECT_NAME } from '@/router/libs/constant' // 路由导航守卫行�
 
 // 创建路由主对象
 const router = createRouter({
-  history: createWebHashHistory('hash'), // 访问模式
+  // history: createWebHistory(), // 访问模式
+  history: createWebHashHistory(), // 访问模式
   routes: basicRoutes as any[], // 路由模块
   strict: true, // 严格模式
   scrollBehavior: scrollBehavior, // 滚动行为控制

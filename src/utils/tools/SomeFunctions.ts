@@ -8,12 +8,7 @@ export function param2Obj(url: string): { token?: string } {
   if (!search) {
     return {}
   }
-  return JSON.parse(
-    `{"${decodeURIComponent(search)
-      .replace(/"/g, '\\"')
-      .replace(/&/g, '","')
-      .replace(/=/g, '":"')}"}`
-  )
+  return JSON.parse(`{"${decodeURIComponent(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"')}"}`)
 }
 
 export function routeToArray(route: string): { routeArr: string[]; params: string } {
@@ -57,7 +52,8 @@ export function numFormat(num: number) {
   return num.toString().replace(/(\d{1,3})(?=(\d{3})+$)/g, '$1,')
 }
 
-export const loadApexCharts = () => new Promise((resolve, reject) => {
+export const loadApexCharts = () =>
+  new Promise((resolve, reject) => {
     if (window.ApexCharts) {
       resolve(window.ApexCharts)
     }
@@ -79,7 +75,8 @@ export const loadApexCharts = () => new Promise((resolve, reject) => {
     script.onreadystatechange = script.onload
   })
 
-export const loadBmap = () => new Promise((resolve, reject) => {
+export const loadBmap = () =>
+  new Promise((resolve, reject) => {
     if (!window.BMap) {
       const script: any = document.createElement('script')
       script.type = 'text/javascript'
@@ -102,7 +99,8 @@ export const loadBmap = () => new Promise((resolve, reject) => {
     }
   })
 
-export const loadCanvasLayer = () => new Promise((resolve, reject) => {
+export const loadCanvasLayer = () =>
+  new Promise((resolve, reject) => {
     const script: any = document.createElement('script')
     script.type = 'text/javascript'
     script.src = '/canvaslayer.js'
@@ -121,7 +119,8 @@ export const loadCanvasLayer = () => new Promise((resolve, reject) => {
     script.onreadystatechange = script.onload
   })
 
-export const loadMapInfoBox = () => new Promise((resolve, reject) => {
+export const loadMapInfoBox = () =>
+  new Promise((resolve, reject) => {
     const script: any = document.createElement('script')
     script.type = 'text/javascript'
     script.src = '//api.map.baidu.com/library/InfoBox/1.2/src/InfoBox_min.js'

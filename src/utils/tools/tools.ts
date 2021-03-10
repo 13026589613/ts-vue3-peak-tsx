@@ -1,11 +1,11 @@
 /**
-* @description 树形数据转换
-* @param {*} params 父子孙的关联标识必须是parentId
-* @author YXM
-*/
-export function treeDataTranslate(data:any, id = 'id', pid = 'parentId') {
-  const res:any = []
-  const temp:any = {}
+ * @description 树形数据转换
+ * @param {*} params 父子孙的关联标识必须是parentId
+ * @author YXM
+ */
+export function treeDataTranslate(data: any, id = 'id', pid = 'parentId') {
+  const res: any = []
+  const temp: any = {}
   for (let i = 0; i < data.length; i++) {
     data[i].id = data[i][id]
     temp[data[i][id]] = data[i]

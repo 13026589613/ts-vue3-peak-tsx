@@ -1,0 +1,453 @@
+.row {
+  margin: 0;
+}
+
+.wrap {
+  width: 100vw;
+  height: 100vh;
+  padding: 24.6vh 0 0 0;
+  overflow: hidden;
+  background-attachment: fixed;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.wrap > .loginBox {
+  display: flex;
+  width: 51vw;
+  height: 27vw;
+  margin: 0 auto;
+  background-color: #fff;
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: 55.8% 100%;
+  justify-content: flex-start;
+}
+
+.wrap > .loginBox > .loginLeft {
+  position: relative;
+  width: 55.8%;
+  height: 100%;
+  color: #fff;
+  text-align: left;
+}
+
+.wrap > .loginBox > .loginLeft > p {
+  width: 100%;
+}
+
+.wrap > .loginBox > .loginLeft > p:first-child {
+  padding-left: 10%;
+  margin-top: 12.4%;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.wrap > .loginBox > .loginLeft > .secondP {
+  padding-left: 10%;
+  font-size: 14px;
+}
+
+.wrap > .loginBox > .loginLeft > p:last-child {
+  position: absolute;
+  bottom: 6%;
+  padding-left: 10%;
+  font-size: 14px;
+}
+
+.wrap > .loginBox > .loginRight {
+  width: 44.2%;
+  height: 100%;
+  text-align: center;
+}
+
+.wrap > .loginBox > .loginRight > .firstP {
+  margin-top: 17.3%;
+  margin-bottom: 5px;
+  font-size: 20px;
+  line-height: 24px;
+  color: #666;
+}
+
+.wrap > .loginBox > .loginRight > .secondP {
+  width: 100%;
+  font-size: 12px;
+  color: rgba(102, 102, 102, 1);
+}
+
+.wrap > .loginBox > .loginRight > .lineP {
+  width: 10%;
+  height: 2px;
+  margin-top: 3px;
+  margin-left: 45%;
+  background-color: #6f9dfb;
+}
+
+.wrap > .loginBox > .loginRight > .formBox {
+  width: 85%;
+  height: 45%;
+  margin-left: 5%;
+}
+
+.usernameBox,
+.passwordBox,
+.codeBox {
+  width: 100%;
+  line-height: 44px;
+  text-align: left;
+  background: #f2f2f2;
+}
+
+.wrap > .loginBox > .loginRight > .formBox > form > p {
+  height: 15px;
+  font-size: 8px;
+  color: red;
+  text-align: left;
+}
+
+.usernameBox {
+  margin-top: 0;
+}
+
+.usernameBox > img,
+.codeBox > img,
+.passwordBox > img {
+  height: 16px;
+  margin-left: 3%;
+}
+
+input {
+  width: 60%;
+  height: 100%;
+  margin-left: 5px;
+  margin-left: 3%;
+  line-height: 100%;
+  background: #f2f2f2;
+  border: none;
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  font-size: 12px;
+
+  /* Chrome/Opera/Safari */
+  color: #666;
+}
+
+::-moz-placeholder {
+  font-size: 12px;
+
+  /* Firefox 19+ */
+  color: #666;
+}
+
+:-ms-input-placeholder {
+  font-size: 14px;
+
+  /* IE 10+ */
+  color: #666;
+}
+
+:-moz-placeholder {
+  font-size: 12px;
+
+  /* Firefox 18- */
+  color: #666;
+}
+
+.codeBox {
+  position: relative;
+
+  input {
+    width: 47%;
+    height: 100%;
+    padding-left: 3%;
+    margin-left: 0;
+  }
+
+  .code-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 35%;
+    cursor: pointer;
+
+    img {
+      display: inherit;
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+    }
+  }
+}
+
+#button {
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  margin-top: 1%;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #3785f2;
+  border: none;
+}
+
+@media only screen and (max-width: 1538px) {
+  .wrap > .loginBox > .loginLeft > p:first-child {
+    font-size: 20px;
+  }
+
+  .wrap > .loginBox > .loginLeft > .secondP {
+    font-size: 12px;
+  }
+
+  .wrap > .loginBox > .loginLeft > p:last-child {
+    font-size: 14px;
+  }
+
+  input {
+    font-size: 12px;
+  }
+
+  ::-webkit-input-placeholder {
+    font-size: 11px;
+
+    /* Chrome/Opera/Safari */
+    color: #666;
+  }
+
+  ::-moz-placeholder {
+    font-size: 11px;
+
+    /* Firefox 19+ */
+    color: #666;
+  }
+
+  :-ms-input-placeholder {
+    font-size: 11px;
+
+    /* IE 10+ */
+    color: #666;
+  }
+
+  :-moz-placeholder {
+    font-size: 11px;
+
+    /* Firefox 18- */
+    color: #666;
+  }
+
+  .usernameBox,
+  .passwordBox,
+  .codeBox {
+    width: 100%;
+    line-height: 34px;
+    text-align: left;
+    background: #f2f2f2;
+  }
+
+  .wrap > .loginBox > .loginRight > .formBox > p {
+    height: 7%;
+    font-size: 4px;
+    color: red;
+    text-align: left;
+  }
+
+  .wrap > .loginBox > .loginRight > .firstP {
+    font-size: 20px;
+    line-height: 22px;
+  }
+
+  .usernameBox > img,
+  .codeBox > img,
+  .passwordBox > img {
+    height: 13px;
+  }
+
+  .wrap > .loginBox > .loginRight > .secondP {
+    font-size: 9px;
+  }
+
+  #button {
+    height: 36px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .wrap > .loginBox > .loginLeft > p:first-child {
+    font-size: 16px;
+  }
+
+  .wrap > .loginBox > .loginLeft > .secondP {
+    font-size: 8px;
+  }
+
+  .wrap > .loginBox > .loginLeft > p:last-child {
+    font-size: 8px;
+  }
+
+  input {
+    font-size: 12px;
+  }
+
+  ::-webkit-input-placeholder {
+    font-size: 12px;
+
+    /* Chrome/Opera/Safari */
+    color: #666;
+  }
+
+  ::-moz-placeholder {
+    font-size: 9px;
+
+    /* Firefox 19+ */
+    color: #666;
+  }
+
+  :-ms-input-placeholder {
+    font-size: 9px;
+
+    /* IE 10+ */
+    color: #666;
+  }
+
+  :-moz-placeholder {
+    font-size: 9px;
+
+    /* Firefox 18- */
+    color: #666;
+  }
+
+  .usernameBox,
+  .passwordBox,
+  .codeBox {
+    width: 100%;
+    line-height: 29px;
+    text-align: left;
+    background: #f2f2f2;
+  }
+
+  .wrap > .loginBox > .loginRight > .formBox > p {
+    height: 7%;
+    font-size: 3px;
+    color: red;
+    text-align: left;
+  }
+
+  .wrap > .loginBox > .loginRight > .firstP {
+    font-size: 12px;
+    line-height: 19px;
+  }
+
+  .usernameBox > img,
+  .codeBox > img,
+  .passwordBox > img {
+    height: 11px;
+  }
+
+  .wrap > .loginBox > .loginRight > .secondP {
+    font-size: 8px;
+  }
+
+  #button {
+    height: 31px;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .wrap > .loginBox > .loginLeft > p:first-child {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .wrap > .loginBox > .loginLeft > p:first-child {
+    font-size: 14px;
+  }
+
+  .wrap > .loginBox > .loginLeft > .secondP {
+    font-size: 5px;
+  }
+
+  .wrap > .loginBox > .loginLeft > p:last-child {
+    font-size: 6px;
+  }
+
+  input {
+    font-size: 6px;
+  }
+
+  ::-webkit-input-placeholder {
+    font-size: 6px;
+
+    /* Chrome/Opera/Safari */
+    color: #666;
+  }
+
+  ::-moz-placeholder {
+    font-size: 6px;
+
+    /* Firefox 19+ */
+    color: #666;
+  }
+
+  :-ms-input-placeholder {
+    font-size: 6px;
+
+    /* IE 10+ */
+    color: #666;
+  }
+
+  :-moz-placeholder {
+    font-size: 6px;
+
+    /* Firefox 18- */
+    color: #666;
+  }
+
+  .usernameBox,
+  .passwordBox,
+  .codeBox {
+    line-height: 18px;
+  }
+
+  .wrap > .loginBox > .loginRight > .formBox > p {
+    height: 7%;
+    font-size: 2px;
+    color: red;
+    text-align: left;
+  }
+
+  .wrap > .loginBox > .loginRight > .firstP {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .usernameBox > img,
+  .codeBox > img,
+  .passwordBox > img {
+    height: 6px;
+  }
+
+  .wrap > .loginBox > .loginRight > .secondP {
+    font-size: 5px;
+  }
+
+  #button {
+    height: 18px;
+    font-size: 7px;
+
+    /* line-height: 18px; */
+  }
+
+  /* #button > input {
+      font-size: 7px;
+      line-height: 14px;
+    } */
+}

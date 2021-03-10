@@ -2,7 +2,7 @@
  * @description 常量数据，window 对象集成
  * @author PP
  */
-const ConstData = {
+export const ConstData = {
   TIP_MSG: {
     ERROR: '操作异常，请联系[系统管理人员]',
     INSERT_SUCCESS: '成功保存信息',
@@ -16,4 +16,5 @@ const ConstData = {
 }
 
 window.ConstData = ConstData // 全量存储注意内容大小
-export default ConstData // 提供对外
+
+export default ConstData

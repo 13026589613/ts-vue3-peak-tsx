@@ -52,17 +52,19 @@ export default class WelcomeComponent extends Vue {
     return (
       <div class='example-wrapper'>
         <h3>1、路由跳转</h3>
-        <span class='example-content' onClick={() => this.handleRouterLink()}>
-          {this.dataValue}
-        </span>
+        <div>
+          <span class='example-content' onClick={() => this.handleRouterLink()}>
+            {this.dataValue}
+          </span>
 
-        <span class='example-content' onClick={() => this.handleRouterLink('params')}>
-          params 传参数
-        </span>
+          <span class='example-content' onClick={() => this.handleRouterLink('params')}>
+            params 传参数
+          </span>
 
-        <span class='example-content' onClick={() => this.handleRouterLink('query')}>
-          query 传参数
-        </span>
+          <span class='example-content' onClick={() => this.handleRouterLink('query')}>
+            query 传参数
+          </span>
+        </div>
 
         {/* 遍历循环事例 */}
         <h3>2、循环遍历展示</h3>

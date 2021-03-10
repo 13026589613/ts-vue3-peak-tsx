@@ -3,6 +3,7 @@
  */
 import { defineComponent, ref, onMounted } from 'vue'
 import store from '@/store'
+
 export default defineComponent({
   render() {
     const msg = ref<string>('Vue3 + TypeScript + TSdX')

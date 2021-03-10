@@ -3,63 +3,42 @@
  * @author PP
  */
 
+// 读取文件
+const path = require('path')
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+
 // 引入gzip压缩插件 3.0.1 版本
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
 // 静态文件迁移复制插件 5.1.1
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-// 代码压缩 2.2.0 版本
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
+// 代码压缩
+const TerserPlugin = require('terser-webpack-plugin')
 // 本地环境是否需要使用cdn
 const DevOpenCDN = false
 
 // cdn链接
-const CDNConfig = {
-  // cdn：模块名称和模块作用域命名（对应window里面挂载的变量名称）
-  externals: {
-    vue: 'Vue',
-    axios: 'axios',
-    moment: 'moment',
-    wangeditor: 'wangeditor',
-    'v-charts': 'VeIndex',
-    'vue-router': 'VueRouter',
-    'ant-design-vue': 'ant-design-vue',
-  },
-  // cdn的css链接
-  cssLink: [
-    'http://cdn.jsdelivr.net/npm/ant-design-vue@1.6.2/dist/antd.min.css',
-    'https://cdn.bootcss.com/wangEditor/3.0.3/wangEditor.min.css',
-  ],
-  // cdn的js链接
-  js: [
-    'https://cdn.bootcss.com/vue/2.6.10/vue.min.js',
-    'https://cdn.bootcss.com/vue-router/3.0.3/vue-router.min.js',
-    'https://cdn.bootcss.com/axios/0.18.0/axios.min.js',
-    'https://cdn.bootcss.com/wangEditor/3.0.3/wangEditor.min.js',
-    'https://cdn.jsdelivr.net/npm/v-charts',
-    'https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js',
-    'https://cdn.bootcdn.net/ajax/libs/moment.js/2.22.2/locale/zh-cn.js',
-    'https://cdn.jsdelivr.net/npm/ant-design-vue@1.6.2/dist/antd.min.js',
-  ],
-}
+const CDNConfig = require('./vue.config.cdn')
 
 // 是否为生产环境
 const isProduction = process.env.NODE_ENV !== 'development'
 
-const path = require('path')
-
+// css 类型
 const cssArray = ['css', 'less', 'scss', 'sass', 'stylus', 'postcss']
 
+// 主题颜色配置
 const primary = '#409eff'
 
-function resolve(dir) {
-  return path.join(__dirname, dir)
-}
+/**
+ * @description 打包属性配置
+ */
 module.exports = {
-  publicPath: './', // 打包路径
-  lintOnSave: false,
+  publicPath: './', // 打包路径 tomcat 采用相对路径/ng采用绝对路径
+
+  lintOnSave: false, // 检查
 
   // pages: {
   //   index: {
@@ -82,15 +61,14 @@ module.exports = {
           path.resolve(__dirname, './src/design/var/index.less'),
           path.resolve(__dirname, './src/design/mixins.less'),
           path.resolve(__dirname, './src/design/color.less'),
-          // path.resolve(__dirname, './src/design/color.less'),
-          // path.resolve(__dirname, './src/design/color.less'),
         ],
       })
 
     config.plugins.delete('prefetch') // 关闭预加载
 
     // 热重载
-    // if (process.env.NODE_ENV !== 'production') {
+    config.resolve.symlinks(true) // Vue热更新
+    // if (process.env.NODE_ENV === 'development') {
     //   config.module
     //     .rule('tsx')
     //     .test(/\.tsx$/)
@@ -99,13 +77,15 @@ module.exports = {
     //     .loader('vue-jsx-hot-loader')
     // }
 
+    // config.optimization.delete('splitChunks')
+
     // 压缩图片 image-webpack-loader
-    // config.module
-    //   .rule('images')
-    //   .use('image-webpack-loader')
-    //   .loader('image-webpack-loader')
-    //   .options({ bypassOnDebug: true })
-    //   .end()
+    config.module
+      .rule('images')
+      .use('image-webpack-loader')
+      .loader('image-webpack-loader')
+      .options({ bypassOnDebug: true })
+      .end()
 
     // CDN连接 注入 public - html
     config.plugin('html').tap(args => {
@@ -149,21 +129,21 @@ module.exports = {
       .set('_conf', resolve('config'))
 
     // 加载svg 模块 vue-svg-icon-loader
-    // const svgRule = config.module.rule('svg')
-    // svgRule.uses.clear()
-    // svgRule
-    //   .oneOf('inline')
-    //   .resourceQuery(/inline/)
-    //   .use('vue-svg-icon-loader')
-    //   .loader('vue-svg-icon-loader')
-    //   .end()
-    //   .end()
-    //   .oneOf('external')
-    //   .use('file-loader')
-    //   .loader('file-loader')
-    //   .options({
-    //     name: 'assets/[name].[hash:8].[ext]',
-    //   })
+    const svgRule = config.module.rule('svg')
+    svgRule.uses.clear()
+    svgRule
+      .oneOf('inline')
+      .resourceQuery(/inline/)
+      .use('vue-svg-icon-loader')
+      .loader('vue-svg-icon-loader')
+      .end()
+      .end()
+      .oneOf('external')
+      .use('file-loader')
+      .loader('file-loader')
+      .options({
+        name: 'assets/[name].[hash:8].[ext]',
+      })
   },
   css: {
     loaderOptions: {
@@ -201,6 +181,8 @@ module.exports = {
       },
     },
   },
+
+  // 本地服务代理
   devServer: {
     proxy: {
       '/api': {
@@ -212,66 +194,60 @@ module.exports = {
       },
     },
   },
+
+  // 打包 Map
   productionSourceMap: false,
+
   /**
    * webpack 配置参数
    */
   configureWebpack: config => {
     // 用cdn方式引入，则构建时要忽略相关资源
-    if (isProduction || DevOpenCDN) config.externals = CDNConfig.externals
+    if (isProduction && DevOpenCDN) config.externals = CDNConfig.externals
 
     // 生产环境相关配置
     if (isProduction) {
       // 公共代码抽离
-      // config.optimization = {
-      //   splitChunks: {
-      //     cacheGroups: {
-      //       vendor: {
-      //         chunks: 'all',
-      //         test: /node_modules/,
-      //         name: 'vendor',
-      //         minChunks: 1,
-      //         maxInitialRequests: 5,
-      //         minSize: 0,
-      //         priority: 100,
-      //       },
-      //       common: {
-      //         chunks: 'all',
-      //         test: /[\\/]src[\\/]js[\\/]/,
-      //         name: 'common',
-      //         minChunks: 2,
-      //         maxInitialRequests: 5,
-      //         minSize: 0,
-      //         priority: 60,
-      //       },
-      //       styles: {
-      //         name: 'styles',
-      //         test: /\.(sa|sc|c)ss$/,
-      //         chunks: 'all',
-      //         enforce: true,
-      //       },
-      //       runtimeChunk: {
-      //         name: 'manifest',
-      //       },
-      //     },
-      //   },
-      // }
+      config.optimization = {
+        splitChunks: {
+          cacheGroups: {
+            vendor: {
+              chunks: 'all',
+              test: /node_modules/,
+              name: 'vendor',
+              minChunks: 1,
+              maxInitialRequests: 5,
+              minSize: 0,
+              priority: 100,
+              priority: -10,
+              chunks: 'initial',
+            },
+            common: {},
+          },
+        },
+      }
 
-      // 代码压缩 2.2.0 版本，如果异常导入该版本
-      // config.plugins.push(
-      //   new UglifyJsPlugin({
-      //     uglifyOptions: {
-      //       // 生产环境自动删除console
-      //       compress: {
-      //         drop_debugger: true,
-      //         drop_console: true,
-      //         pure_funcs: ['console.log'],
-      //       },
-      //     },
-      //     sourceMap: false,
-      //     parallel: true,
-      //   })
-      // )
+      // 代码压缩
+      config.plugins.push(
+        new TerserPlugin({
+          test: /\.js|ts(\?.*)?$/i, //匹配参与压缩的文件
+          // parallel: true, //使用多进程并发运行
+          parallel: 4,
+          exclude: [/\/server/, /\/public/, /\/mock/, /\/build/],
+          terserOptions: {
+            ecma: undefined,
+            output: { comments: false },
+            cache: true,
+            sourceMap: false,
+            compress: {
+              drop_debugger: true,
+              drop_console: true,
+              pure_funcs: ['console.log'], // 移除console
+            },
+          },
+          extractComments: true, //将注释剥离到单独的文件中
+        })
+      )
 
       // gzip压缩
       const productionGzipExtensions = ['html', 'js', 'css']
@@ -283,11 +259,15 @@ module.exports = {
           threshold: 10240, // 只有大小大于该值的资源会被处理 10240
           minRatio: 0.7, // 只有压缩率小于这个值的资源才会被处理
           deleteOriginalAssets: false, // 删除原文件
-        }),
+        })
+      )
+
+      // 拷贝静态文件或者文件夹
+      config.plugins.push(
         new CopyWebpackPlugin([
           {
-            from: path.resolve(__dirname, './z-generate'), // 定义要拷贝的源目录，必填项
-            to: `${config.output.path}/z-generate`, // 定义要拷贝到的目标目录，非必填，不填写则拷贝到打包的output输出地址中
+            from: path.resolve(__dirname, './server'), // 定义要拷贝的源目录，必填项
+            to: `${config.output.path}/server`, // 定义要拷贝到的目标目录，非必填，不填写则拷贝到打包的output输出地址中
           },
         ])
       )

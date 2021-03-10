@@ -58,9 +58,9 @@ declare global {
     config: {
       proUrl?: string
       devUrl?: string
-      imgShowUrl?: string
+      fileUrl?: string
       baseUrl?: string
-      generateURL?: string
+      generateUrl?: string
       domain?: string
       version?: string
       CDN?: string

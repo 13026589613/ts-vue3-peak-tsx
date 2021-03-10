@@ -1,0 +1,288 @@
+@charset "UTF-8";
+
+
+/* Animation ------------------------------ */
+// 从下到上弹出
+.bottom-to-top-enter-active {
+  transition: all 0.2s ease-out;
+}
+
+.bottom-to-top-leave,
+.bottom-to-top-leave-active {
+  opacity: 0;
+  transform: translateY(-10%);
+  transition: all 0.2s ease-out;
+}
+
+.bottom-to-top-enter {
+  transform: translateY(-5%);
+}
+
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+
+/* 主页面展示 */
+.left-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+
+.left-enter-active {
+  background-color: #fff;
+  opacity: 1;
+}
+
+.left-leave {
+  z-index: 1;
+  opacity: 0;
+}
+
+.left-leave-active {
+  z-index: 1;
+  opacity: 0.5;
+  transform: translate3d(80%, 0, 0);
+}
+
+.left-enter-active,
+.left-leave-active {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: all 0.6s ease;
+}
+
+.left-enter-active {
+  z-index: 99 !important;
+}
+
+// 滑切进入效果
+.slider-in-enter-active {
+  transition: all 0.2s;
+}
+
+.slider-in-leave-active {
+  transition: all 0.4s;
+}
+
+.slider-in-leave-active {
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+}
+
+.slider-in-enter {
+  opacity: 0;
+  transform: translate3d(6rem, 0, 0);
+}
+
+.slider-in-enter {
+  z-index: 99;
+}
+
+// 左侧划出同时右侧划入
+.left-out-right-in-enter-active {
+  transition: all 0.6s;
+}
+
+.left-out-right-in-leave-active {
+  transition: all 0.6s;
+}
+
+.left-out-right-in-leave-active {
+  opacity: 0;
+  transform: translate3d(0%, 0, 0);
+}
+
+.left-out-right-in-enter {
+  transform: translate3d(100%, 0, 0);
+}
+
+.slider-in-enter {
+  z-index: 99;
+}
+
+// 子集页面展示
+.router-slid-enter-active,
+.router-slid-leave-active {
+  transition: all 0.3s;
+}
+
+.router-slid-enter,
+.router-slid-leave-active {
+  opacity: 0;
+  transform: translate3d(10rem, 0, 0);
+}
+
+.router-slid-enter {
+  z-index: 99;
+}
+
+// 遮罩层
+.screen_cover {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 11;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+/* 列表展开 */
+.toggle-cart-enter-active,
+.toggle-cart-leave-active {
+  transition: all 0.4s ease-out;
+}
+
+.toggle-cart-leave {
+  transform: translateY(0%);
+}
+
+.toggle-cart-enter {
+  transform: translateY(100%);
+}
+
+
+/* 遮罩层淡出 */
+.fade-enter-active,
+.fade-leave-active {
+  /* transition: opacity 0.3s; */
+  transition: opacity 0.6s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+/* 中部弹出逐渐放大缩小 */
+@keyframes centerShow {
+  0% {
+    opacity: 0.5;
+    transform: scale(.2);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@-moz-keyframes centerShow {
+  0% {
+    opacity: 0.5;
+    transform: scale(.2);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes centerShow {
+  0% {
+    opacity: 0.5;
+    transform: scale(.2);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(.6);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes centerHidden {
+  0% {
+    opacity: 0.6;
+    transform: scale(.6);
+  }
+
+  50% {
+    opacity: 0.3;
+    transform: scale(.3);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@-moz-keyframes centerHidden {
+  0% {
+    opacity: 0.6;
+    transform: scale(.6);
+  }
+
+  50% {
+    opacity: 0.3;
+    transform: scale(.3);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@-webkit-keyframes centerHidden {
+  0% {
+    opacity: 0.6;
+    transform: scale(.6);
+  }
+
+  50% {
+    opacity: 0.3;
+    transform: scale(.3);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.center-show-enter-active {
+  animation: centerShow 0.2s ease-in-out;
+}
+
+.center-show-leave-active {
+  animation: centerHidden 0.2s ease-in-out;
+}
+
+
+.loading-enter-active,
+.loading-leave-active {
+  transition: opacity 1s;
+}
+
+.loading-enter,
+.loading-leave-active {
+  opacity: 0;
+}

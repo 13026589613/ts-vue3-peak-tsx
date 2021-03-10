@@ -6,6 +6,8 @@ import App from './App' // app 引导首页
 import { isDev, useMock } from '@/utils/tools/env' // 生产模式
 import { initApi } from '@/config/plugins/tools/axios'
 
+import '@/config' // 导入常规配置项
+
 // 初始化创建Vue
 const app = createApp(App)
 

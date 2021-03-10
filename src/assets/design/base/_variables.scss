@@ -1,0 +1,22 @@
+/*  ----------------- 站点配色 CSS 属性配置 ------------- */
+
+/* tips: 要达到整站主题修改效果, 请确保 [$--color-primary] 站点主色与 [/src/element-ui-theme/index.js] 文件中 [import './element-[#17B3A3]/index.css'] 当前主题色一致 */
+$--color-primary: #17B3A3;
+
+// 引导框配置
+$navbar--background-color: $--color-primary;
+
+// 管理菜单配置
+$sidebar--background-color-dark: #FFF;
+$sidebar--background-color-dark-active: #f0faff;
+$sidebar--color-text-dark: #25476a;
+$sidebar--color-text-dark-active: #3E8EF7;
+
+
+// Content
+$content--background-color: #f1f4f5;
+
+// 布局配色
+$menu-dark-title: #fff;
+$menu-dark-active-bg: #fff;
+$layout-sider-background: #fff;
