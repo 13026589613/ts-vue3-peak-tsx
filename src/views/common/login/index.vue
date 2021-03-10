@@ -77,7 +77,7 @@
                   id="button"
                   value="立即登录"
                   type="button"
-                  @click="submitLogin()"
+                  @click="handleSubmitLogin()"
                 />
               </section>
             </form>
@@ -104,12 +104,9 @@
           password: 'admin',
           captcha: 'captcha',
         },
-        codeImage: null,
-        uuidTime: 0,
-        modalVisible: false,
-        roleList: [], // 登录用户的角色集合
-        roleValue: null, // 登录用户当前角色
-        systemName: null,
+        codeImage: null, // 验证码图片
+        uuidTime: 0, // 验证码请求随机码
+        systemName: null, // 系统名称
       }
     },
     created() {
@@ -126,12 +123,15 @@
       // this.initCodeImg() // 加载验证码
     },
     methods: {
-      keyLogig(e) {
-        e.keyCode === 13 ? this.submitLogin() : null
+      /**
+       * @description 回车键
+       */
+      lisenerkeyEvent(e) {
+        e.keyCode === 13 ? this.handleSubmitLogin() : null
       },
 
       /**
-       * 加载验证码
+       * @description 加载验证码
        */
       initCodeImg() {
         this.uuidTime = new Date().getTime()
@@ -139,9 +139,9 @@
       },
 
       /**
-       * 系统登陆
+       * @description 系统登陆
        */
-      submitLogin() {
+      handleSubmitLogin() {
         const { Message } = hookMessage()
         if (isEmptyValue(this.loginForm.username)) {
           Message.error('请输入任意用户名')
@@ -180,7 +180,7 @@
               router.push({ name: PageEnum.BASE_HOME_NAME })
             } else {
               this.loginForm.captcha = null
-              this.initCodeImg()
+              this.initCodeImg() // 刷新验证码
             }
           })
       },
