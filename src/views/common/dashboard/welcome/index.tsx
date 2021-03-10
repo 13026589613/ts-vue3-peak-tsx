@@ -224,7 +224,7 @@ export default class WelcomeComponent extends Vue {
         },
       })
       .then((res: any) => {
-        this.mockAxiosListData = res.result.list
+        this.mockAxiosListData = res.data.list
       })
   }
 }

@@ -14,6 +14,10 @@ export function checkRequestStatus(code: number = 200, msg: string | null, statu
   Message.destroy()
 
   switch (code) {
+    // mock 201 错误警告
+    case 201:
+      Message.error(`${msg || '该请求无效'}`)
+      break
     // 权限不足
     case 401:
       Message.error(`${msg || '访问权限错误'}`)

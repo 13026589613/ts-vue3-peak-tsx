@@ -49,7 +49,7 @@ export class AxiosClass {
           config.headers.token = token
           config.headers['x-access-token'] = token
         }
-        console.log(config)
+
         return config
       },
       error => Promise.reject(error)
@@ -58,16 +58,21 @@ export class AxiosClass {
 
   /**
    * @description Response 反馈结果 服务拦截处理
+   * @returns AxiosResponse<any>
    */
   initResponseInterceptors() {
-    this.axiosInstance.interceptors.response.use((response: AxiosResponse<any>) => {
+    this.axiosInstance.interceptors.response.use((response: any) => {
       // 统一格式化 -- 同构转化后台反馈的Map-key规则。集中化管理 response 内容
       const responseData = merge(cloneDeep(response.data), {
         status: true,
       })
-      const { msg, code, result } = responseData
 
-      return responseData
+      const { code, message } = responseData
+
+      // 处理异常错误码，提醒错误信息
+      checkRequestStatus(code, message)
+
+      return { data: responseData.result, message: responseData.message, success: responseData.status } as any
     }, undefined)
   }
 
@@ -77,7 +82,7 @@ export class AxiosClass {
   initResponseErrorInterceptors() {
     this.axiosInstance.interceptors.response.use(undefined, error => {
       const errorData = merge(cloneDeep(error?.response?.data), {
-        status: true,
+        status: false,
       })
       const { code, message } = errorData
 

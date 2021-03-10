@@ -18,7 +18,7 @@ declare module 'fastclick'
 declare module 'vuex-class'
 
 declare module 'vue-savedata'
-
+declare module 'js-md5'
 declare module 'js-cookie'
 
 // declare module '@antv/g2plot'

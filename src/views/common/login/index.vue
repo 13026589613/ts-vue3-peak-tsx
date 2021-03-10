@@ -94,6 +94,7 @@
   import { isEmptyValue } from '@/utils/tools/Is'
   import { hookMessage } from '@/hooks/antd/hookMessage'
   import router from '@/router'
+  // import md5 from 'js-md5'
 
   export default {
     data() {
@@ -152,36 +153,36 @@
           return
         }
 
-        if (isEmptyValue(this.loginForm.captcha)) {
-          Message.error('请输入任意验证码')
-          return
-        }
-
-        router.push({ name: PageEnum.BASE_HOME_NAME })
+        // if (isEmptyValue(this.loginForm.captcha)) {
+        //   Message.error('请输入任意验证码')
+        //   return
+        // }
 
         // 登录接口服务
-        // this.$ModuleApis.user
-        //   .login({
-        //     data: {
-        //       username: this.loginForm.username,
-        //       password: this.$md5(this.loginForm.password),
-        //       verifyCode: this.loginForm.captcha, // 图片验证
-        //       verifyId: this.uuidTime, // 验证ID
-        //       client: 0, // 客户端类型
-        //       uuid: this.uuidTime, // UUID 访问Key
-        //     },
-        //   })
-        //   .then(res => {
-        //     if (res.success) {
-        //       this.$Cookies.set('token', res.body.token, { expires: 100 }) // 保存系统登录 token
-        //       this.$Cookies.set('userInfo', res.body.userInfo, { expires: 100 }) // 存储用户资料
+        this.$ModuleApis.base
+          .userLogin({
+            data: {
+              username: this.loginForm.username,
+              // password: this.$md5(this.loginForm.password),
+              password: this.loginForm.password,
+              verifyCode: this.loginForm.captcha, // 图片验证
+              verifyId: this.uuidTime, // 验证ID
+              client: 0, // 客户端类型
+              uuid: this.uuidTime, // UUID 访问Key
+            },
+          })
+          .then(res => {
+            if (res.success) {
+              const { data } = res
+              Cookies.set('token', data.token, { expires: 100 }) // 保存系统登录 token
+              Cookies.set('userInfo', data.userInfo, { expires: 100 }) // 存储用户资料
 
-        //       this.$router.replace({ name: 'home' })
-        //     } else {
-        //       this.loginForm.captcha = null
-        //       this.initCodeImg()
-        //     }
-        //   })
+              router.push({ name: PageEnum.BASE_HOME_NAME })
+            } else {
+              this.loginForm.captcha = null
+              this.initCodeImg()
+            }
+          })
       },
     },
   }

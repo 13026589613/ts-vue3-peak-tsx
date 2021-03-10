@@ -1,8 +1,8 @@
 import { useMock } from '@/utils/tools/env'
 /**
- * @description 基础功能 - 接口API
+ * @description 样例功能 - 接口API
  */
-const API_CONTRACT_URL = {
+const API_DEMO = {
   BASE: useMock() ? '/service' : '', // RESTFUL 风格基础路径
   MODUlES_NAME: '',
 }
@@ -16,11 +16,11 @@ export default {
    * @param editParams
    */
   initExampleList: {
-    url: `${API_CONTRACT_URL.BASE}${API_CONTRACT_URL.MODUlES_NAME}/initExampleList`,
+    url: `${API_DEMO.BASE}${API_DEMO.MODUlES_NAME}/initExampleList`,
     method: 'post',
-    headers: {
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
+    // headers: {
+    //   'Content-Type': 'application/x-www-form-urlencoded',
+    // },
     // contentType: 'qs',
   },
 }

@@ -50,7 +50,8 @@
     "fastclick": "1.0.6",
     "vue-property-decorator": "9.1.2",
     "vue-savedata": "^2.0.6",
-    "mockjs2": "^1.0.8"
+    "mockjs2": "^1.0.8",
+    "js-md5": "^0.7.3"
   },
   "devDependencies": {
     "@types/node": "^12.12.6",

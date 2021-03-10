@@ -35,7 +35,6 @@ const initExampleList = params => {
   const { data } = queryParams // 查询参数位置
   let base = []
   if (queryParams.delFlag) {
-    console.log(queryParams.delFlag)
     base = listBase.filter(item => item.delFlag.indexOf(queryParams.delFlag) > 0)
   } else {
     base = listBase.filter(item => (data ? item.delFlag.indexOf(data.delFlag) > 0 : item))

@@ -165,7 +165,6 @@ export default class Api {
    */
   _post = (options: Options) => {
     const { url = '', data, headers } = options
-    console.log(data)
     const requestURL = this.mergeUrl(url, options.baseUrl)
     const params = this.mergeData(data, options.openDefaultParams, options.contentType, options.listParams)
 
