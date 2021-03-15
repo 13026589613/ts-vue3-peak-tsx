@@ -44,7 +44,7 @@ export class AxiosClass {
         config.headers = config.headers || { Accept: ContentType.JSON_TYPE, 'Content-Type': 'application/json' }
 
         // 请求头带上token
-        const token = Cookies.get('token') || null
+        const token = Cookies.get(window.TOKEN._AUTH) || null
         if (token) {
           config.headers.token = token
           config.headers['x-access-token'] = token

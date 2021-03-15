@@ -18,7 +18,7 @@
 
           <!-- 表单 -->
           <div class="formBox">
-            <form method="post">
+            <form method="post" @keydown.enter.native="lisenerkeyEvent">
               <!-- 用户名 -->
               <section class="row">
                 <div unless="${openIdLocalId}" class="usernameBox">
@@ -114,7 +114,7 @@
       this.systemName = window.SYS_NAME.replace('/', '')
 
       //判断是否有token 如果有则直接去首页
-      let token = Cookies.get('token') || null
+      let token = Cookies.get(window.TOKEN._AUTH) || null
       if (token) {
         // router.push({ name: PageEnum.BASE_HOME_NAME })
       }
@@ -127,6 +127,7 @@
        * @description 回车键
        */
       lisenerkeyEvent(e) {
+        console.log(e)
         e.keyCode === 13 ? this.handleSubmitLogin() : null
       },
 

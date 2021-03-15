@@ -41,6 +41,14 @@ window.CROSS_CODE = 200
 window.SYS_NAME = 'TS-WEB管理系统'
 
 /**
+ * @description token
+ * @param
+ */
+window.TOKEN = {
+  _AUTH: 'TOKEN',
+}
+
+/**
  * @description 系统默认头像图片
  * @param
  */

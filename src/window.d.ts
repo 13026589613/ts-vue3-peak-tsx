@@ -16,6 +16,9 @@ declare global {
     SHOW_TAG_TABS_POSITION: string | 'top' | 'content' // 导航页签显示位置 top -> 头部 content -> 内容区域
     SHOW_FOOTER_LAYOUT: boolean // 底部布局
     SYS_NAME: string // 系统名称配置
+    TOKEN: {
+      _AUTH: string
+    }
 
     SIGNAL_MESSAGE_INFO: any // 系统非表格默认response 参数处理
     TABLE_BASE_RESPONSE_PARAMS: any // 系统表格默认response 参数处理

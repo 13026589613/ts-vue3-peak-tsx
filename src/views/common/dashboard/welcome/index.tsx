@@ -5,6 +5,7 @@
 import { defineComponent, ref, getCurrentInstance, onMounted } from 'vue'
 import { Vue, Options } from 'vue-class-component'
 import { useRoute, useRouter } from 'vue-router'
+import Cookies from 'js-cookie'
 import axios, { AxiosPromise, AxiosInstance } from 'axios'
 import router from '@/router'
 
@@ -14,7 +15,6 @@ import HelloWordTsClass from '@/views/components/hello-word-ts-class.vue'
 import HelloWordTsx from '@/views/components/hello-word-tsx'
 import HelloWordClassTsx from '@/views/components/hello-word-class-tsx'
 import './index.scss'
-
 @Options({
   name: 'WelcomeComponent',
   components: {
@@ -63,6 +63,10 @@ export default class WelcomeComponent extends Vue {
 
           <span class='example-content' onClick={() => this.handleRouterLink('query')}>
             query 传参数
+          </span>
+
+          <span class='example-content' onClick={() => this.handleLogout()}>
+            退出登录
           </span>
         </div>
 
@@ -158,6 +162,15 @@ export default class WelcomeComponent extends Vue {
         <br />
       </div>
     )
+  }
+
+  /**
+   * @description 退出登录
+   */
+  handleLogout() {
+    console.log(Cookies)
+    Cookies.remove(window.TOKEN._AUTH)
+    router.push({ name: 'Login' })
   }
 
   /**

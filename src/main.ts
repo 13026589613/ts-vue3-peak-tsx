@@ -11,14 +11,14 @@ import '@/config' // 导入常规配置项
 // 初始化创建Vue
 const app = createApp(App)
 
-// 路由加载配置
-setupRouter(app)
+// 装载 axios - modules 对象集合
+initApi(app)
 
 // 装载Store
 setupStore(app)
 
-// 装载 axios - modules 对象集合
-initApi(app)
+// 路由加载配置
+setupRouter(app)
 
 // 路由加载完成，初始化引导首页
 router.isReady().then(() => {
