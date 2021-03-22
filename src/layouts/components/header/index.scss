@@ -1,0 +1,104 @@
+@import '@/assets/design/base/_common.scss';
+
+/* ------------------ 桌面头部样式 ------------------ */
+.header-content-wrapper {
+  display: flex;
+}
+
+.ant-layout .ant-layout-header {
+  padding: 0;
+  background: #fff;
+  border-bottom: 1px solid #f3f3f3;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+
+  .right-user-wrapper {
+    float: right;
+    width: auto;
+    padding: 0 0 0 20px;
+    @extend .flex-rows-container;
+
+    & > section {
+      @extend .flex;
+      height: 64px;
+      padding: 0 10px;
+      cursor: pointer;
+      align-items: center;
+
+      &:hover {
+        background: #f6f6f6;
+      }
+    }
+  }
+
+  i.trigger {
+    width: 64px;
+    font-size: 22px;
+    line-height: 64px;
+    cursor: pointer;
+
+    &:hover {
+      background: #f6f6f6;
+    }
+  }
+}
+
+/* ------------------ 弹窗头部样式 ------------------ */
+.header-content {
+  .ant-popover-inner-content {
+    padding: 0;
+
+    .ant-menu-vertical {
+      padding: 0 15px;
+      border: 0;
+
+      & > .ant-menu-item {
+        height: 40px;
+        padding: 0;
+        line-height: 40px;
+      }
+    }
+  }
+
+  .header-info-wrapper {
+    padding: 15px 60px;
+    text-align: center;
+    background: #f3f3f3;
+
+    .user-name-title {
+      display: block;
+      margin-top: 10px;
+      font-size: 14;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .ant-avatar {
+      padding: 5px;
+      border: 1px solid #fff;
+    }
+  }
+}
+
+section[name='user-info'] {
+  width: 65px;
+  padding: 0 !important;
+  padding-left: 10px !important;
+}
+
+/* 头部固定 */
+.ant-layout .ant-layout-header.fixed-header {
+  top: 0;
+  // position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+
+.ant-layout .has-fixed-side {
+  width: calc(100% - 245px) !important;
+}
+
+.ant-layout .has-collapsed-fixed-side {
+  width: calc(100% - 80px) !important;
+}

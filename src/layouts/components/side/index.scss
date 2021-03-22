@@ -1,0 +1,200 @@
+@import '@/assets/design/base/_common.scss';
+
+/* ------------------ 桌面web菜单样式 ------------------ */
+.ant-menu.ant-menu-dark.ant-menu-inline-collapsed .ant-menu-submenu-vertical.ant-menu-submenu-selected {
+  color: #52c41a;
+  // background-color: #52c41a;
+}
+
+.ant-menu-vertical > .ant-menu-item,
+.ant-menu-vertical-left > .ant-menu-item,
+.ant-menu-vertical-right > .ant-menu-item,
+.ant-menu-inline > .ant-menu-item,
+.ant-menu-vertical > .ant-menu-submenu > .ant-menu-submenu-title,
+.ant-menu-vertical-left > .ant-menu-submenu > .ant-menu-submenu-title,
+.ant-menu-vertical-right > .ant-menu-submenu > .ant-menu-submenu-title,
+.ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title {
+  height: 50px;
+  line-height: 50px;
+}
+
+.ant-menu .ant-menu-submenu-title {
+  // 修改父层文字大小
+  font-size: 14px;
+}
+
+.ant-menu .ant-menu-sub.ant-menu-inline > .ant-menu-item {
+  height: 45px;
+  line-height: 45px;
+}
+
+.ant-menu .ant-menu-submenu-open > .ant-menu-submenu-title {
+  color: #52c41a;
+}
+
+// 左侧菜单 及 logo部分
+.side.left-side {
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+
+  /* ------------------ 头部用户样式 ------------------ */
+  .header-content {
+    background: #002140;
+
+    .ant-row {
+      margin-bottom: 10px;
+      text-align: center;
+
+      a {
+        font-size: 12px;
+        font-weight: 300;
+        color: #f3f3f3;
+      }
+    }
+
+    .header-info-wrapper {
+      display: flex;
+      padding: 15px 0;
+      margin-bottom: 10px;
+      color: #f3f3f3;
+      text-align: center;
+      background: #002140;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .ant-avatar {
+        border: 1px solid transparent;
+      }
+
+      .info-img-header {
+        margin: 0 10px 0 20px;
+      }
+
+      .right-user-info {
+        font-size: 12px;
+        font-weight: 400;
+        text-align: left;
+        flex: 1;
+
+        .user-name-title {
+          display: block;
+          margin-top: 0;
+          font-size: 14;
+          font-weight: 300;
+          color: #f3f3f3;
+        }
+
+        .role-drop {
+          display: block;
+          padding-top: 7px;
+
+          .ant-dropdown-link {
+            color: #f3f3f3;
+          }
+        }
+      }
+    }
+  }
+
+  section[name='user-info'] {
+    width: 65px;
+    padding: 0 !important;
+    padding-left: 10px !important;
+  }
+
+  /*  ----------------- logo  ------------- */
+  .side-logo {
+    position: relative;
+    height: 64px;
+    padding-left: 24px;
+    overflow: hidden;
+    line-height: 64px;
+    background: #002140;
+    transition: all 0.3s;
+
+    a {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      ul {
+        height: 100%;
+        // padding-top: 12px;
+        padding-top: 20px;
+        padding-left: 10px;
+        line-height: 20px;
+        flex: 1;
+
+        li {
+          font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+          // font-size: 14px;
+          font-size: 16px;
+          font-weight: 500;
+          color: #1890ff;
+        }
+      }
+    }
+
+    img,
+    svg,
+    h3 {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    img,
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+.ant-dropdown-menu {
+  .active {
+    background-color: #e6f7ff;
+  }
+}
+
+.side.fixed-side {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  .ant-layout-sider-children {
+    @extend .flex;
+    flex-direction: column;
+
+    ul.ant-menu-root {
+      overflow-y: auto;
+      flex: 1;
+
+      /* 滚动条样式 */
+      &::-webkit-scrollbar {
+        width: 0; // 滚动条整体样式
+        height: 4px; // 高宽分别对应横竖滚动条的尺寸
+      }
+
+      /* 滚动条内部滑块 */
+      &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 5px rgba(184, 169, 169, 0.473);
+      }
+
+      /* 滚动条里面轨道 */
+      &::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 0;
+        -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.849);
+      }
+    }
+  }
+}

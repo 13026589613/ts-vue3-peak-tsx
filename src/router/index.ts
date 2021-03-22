@@ -22,6 +22,11 @@ router.onError(error => {
   console.error(error)
 })
 
+// router 拦截
+router.beforeEach((to: any, from: any, next: Function) => {
+  next()
+})
+
 export default router // 对外提供服务对象
 
 /**
@@ -42,7 +47,10 @@ export function setupRouter(app: App<Element>) {
   // 加载动态路由
   createAsyncRoutes(app).then(res => {
     store.dispatch('routeStore/ActionSetRoutes', res).then(item => {
-      // console.log(routeStore.getGenerateRoutes)
+      routeStore.getGenerateRoutes.map(info => {
+        console.log(info.name)
+      })
+      console.log(item)
     })
   })
 

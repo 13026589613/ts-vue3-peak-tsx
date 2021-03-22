@@ -1,0 +1,34 @@
+@import '@/assets/design/base/_common.scss';
+
+.ant-layout .layout-content-wrapper {
+  .content-wrapper {
+    position: relative;
+    padding: 15px;
+    overflow-x: hidden !important;
+  }
+
+  .bg-wrapper {
+    @extend .content-wrapper;
+    background: #fff;
+  }
+}
+
+/* fixed-header样式 */
+.ant-layout .ant-layout-content.fixed-header-content {
+  // margin-top: 64px;
+  flex: 1;
+  overflow: hidden;
+  @extend .flex;
+  flex-direction: column;
+
+  .content-wrapper {
+    // @extend .scrollbar;
+    overflow: auto;
+    flex: 1;
+
+    .content {
+      height: 'auto';
+      background: #fff;
+    }
+  }
+}

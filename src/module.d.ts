@@ -21,6 +21,8 @@ declare module 'vue-savedata'
 declare module 'js-md5'
 declare module 'js-cookie'
 
+declare module '@ant-design-vue/pro-layout'
+
 // declare module '@antv/g2plot'
 // declare module 'insert-css'
 // declare module 'electron'

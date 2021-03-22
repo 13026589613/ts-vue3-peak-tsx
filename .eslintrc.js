@@ -4,7 +4,7 @@ module.exports = {
     node: true,
   },
   // extends: ['plugin:vue/strongly-recommended', '@vue/standard'],
-  extends: ['plugin:vue/strongly-recommended'],
+  // extends: ['plugin:vue/strongly-recommended'],
   rules: {
     'no-console': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',

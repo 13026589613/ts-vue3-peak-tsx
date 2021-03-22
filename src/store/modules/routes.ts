@@ -29,7 +29,7 @@ class RouteStore extends VuexModule {
     try {
       this.commitSetRoutesState(value) // 设置 store - token
 
-      return {}
+      return { generateRoutes: this.generateRoutes, allRoutes: this.allRoutes }
     } catch (error) {
       return null
     }
