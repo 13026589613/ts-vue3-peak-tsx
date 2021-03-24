@@ -4,7 +4,7 @@ import camelCase from 'lodash/camelCase'
 const path = require('path')
 
 /**
- * @description 自动装载components 组件，加载index文件
+ * @description 自动装载注册 components 组件，只需加载index文件调用 install
  */
 export default {
   install: function (app: any) {

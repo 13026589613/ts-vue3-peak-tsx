@@ -1,6 +1,6 @@
 import { App } from 'vue'
 import { listToTreeNode } from '@/utils/tools/TransData'
-import { LAYOUT } from '@/router/libs/constant'
+import { LAYOUT, LAYOUT_ROUTER_BASE } from '@/router/libs/constant'
 /**
  * @description 通过登录用户的权限动态加载菜单配置，创建routers
  */
@@ -33,7 +33,7 @@ export const createAsyncRoutes = (app: App) => {
 export const initRoutesList = (menuTreeList: any[], parentMenu: any = null) => {
   return menuTreeList.map((item, index: number) => {
     // meta 参数
-    const { title, show, hideChildren, hiddenHead, target, icon } = item.meta || {}
+    const { title, show, hideChildren, hiddenHead, target, icon, menuLink } = item.meta || {}
 
     // 当前处理的 router 对象
     const currentRouter = {
@@ -46,6 +46,7 @@ export const initRoutesList = (menuTreeList: any[], parentMenu: any = null) => {
         title: title,
         icon: icon || undefined,
         hiddenHead: hiddenHead || false,
+        menuLink: menuLink || false,
         // target: target,
         // permission: item.name,
       },
@@ -67,7 +68,13 @@ export const initRoutesList = (menuTreeList: any[], parentMenu: any = null) => {
     // 为了防止出现后端返回结果不规范，处理有可能出现拼接出两个 反斜杠
     if (currentRouter.path && !currentRouter.path.startsWith('http')) {
       currentRouter.path = currentRouter.path.replace('//', '/')
-      currentRouter.component = item.componentPath === null ? LAYOUT : () => import(`@/${item.componentPath}`)
+
+      currentRouter.component =
+        item.componentPath === null || typeof item.componentPath === 'undefined'
+          ? item.meta.isSubMenu
+            ? LAYOUT_ROUTER_BASE
+            : LAYOUT
+          : () => import(`@/${item.componentPath}`)
     }
 
     // 递归处理子集 children

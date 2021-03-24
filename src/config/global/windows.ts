@@ -55,6 +55,11 @@ window.TOKEN = {
 window.DEFAULT_HEADER_IMG = 'https://gw.alipayobjects.com/zos/rmsportal/jZUIxmJycoymBprLOUbT.png'
 
 /**
+ * @description 默认登录用户名称
+ */
+window.DEFAULT_LOGIN_USER_NAME = '默认管理员'
+
+/**
  * @description 系统侧滑弹窗编辑框
  */
 window.DRAWER_WINDOWS_WIDTH = '45%'

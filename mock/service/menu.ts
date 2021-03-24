@@ -14,103 +14,91 @@ const userMenuNav = params => {
   const queryParams = params.type === 'POST' ? getBody(params) : getQueryParameters(params)
 
   const userNav = [
-    // dashboard
-    // {
-    //   name: 'dashboard',
-    //   parentId: 0,
-    //   id: 1,
-    //   meta: {
-    //     icon: 'dashboard',
-    //     title: '仪表盘',
-    //     show: true,
-    //   },
-    //   component: 'RouteView',
-    //   redirect: '/dashboard/workplace',
-    // },
-    // {
-    //   name: 'workplace',
-    //   parentId: 1,
-    //   id: 7,
-    //   meta: {
-    //     title: '工作台',
-    //     show: true,
-    //   },
-    //   component: 'Workplace',
-    // },
-    // {
-    //   name: 'monitor',
-    //   path: 'https://www.baidu.com/',
-    //   parentId: 1,
-    //   id: 3,
-    //   meta: {
-    //     title: '监控页（外部）',
-    //     target: '_blank',
-    //     show: true,
-    //   },
-    // },
-
-    // account
+    {
+      name: 'example',
+      parentId: 0,
+      id: 100000,
+      path: '/example',
+      meta: {
+        title: '样例代码',
+        icon: 'user',
+        show: true,
+        menuLink: true,
+      },
+      componentPath: 'views/modules/example/base',
+    },
     {
       name: 'eip',
       parentId: 0,
-      id: 10028,
+      id: 200,
       path: '/eip',
       meta: {
-        title: 'eip',
+        title: '系统管理',
         icon: 'user',
-        // show: true,
+        show: true,
       },
-      // redirect: '/eip/area',
+      redirect: '/eip/area',
       componentPath: null,
     },
     {
       name: 'area',
-      parentId: 10028,
-      id: 10029,
+      parentId: 200,
+      id: 2001,
       path: 'area',
       componentPath: 'views/modules/eip/area/index',
       meta: {
-        title: '地区',
-        // show: true,
+        title: '地区管理',
+        show: true,
       },
     },
-    // 特殊三级菜单
-    // {
-    //   name: 'settings',
-    //   parentId: 10028,
-    //   id: 10030,
-    //   path: '/eip',
-    //   meta: {
-    //     title: '个人设置',
-    //     hideHeader: true,
-    //     hideChildren: true,
-    //     show: true,
-    //   },
-    //   redirect: '/eip/area',
-    //   component: 'AccountSettings',
-    // },
-    // {
-    //   name: 'BaseSettings',
-    //   path: '/eip/area',
-    //   parentId: 10030,
-    //   id: 10031,
-    //   meta: {
-    //     title: '基本设置',
-    //     show: false,
-    //   },
-    //   component: 'BaseSettings',
-    // },
-    // {
-    //   name: 'SecuritySettings',
-    //   path: '/account/settings/security',
-    //   parentId: 10030,
-    //   id: 10032,
-    //   meta: {
-    //     title: '安全设置',
-    //     show: false,
-    //   },
-    //   component: 'SecuritySettings',
-    // },
+    {
+      name: 'threeMenu',
+      parentId: 0,
+      id: 10000,
+      path: '/three-menu',
+      meta: {
+        title: '多层结构',
+        icon: 'user',
+        show: true,
+      },
+      componentPath: null,
+    },
+    {
+      name: 'subMenu',
+      parentId: 10000,
+      id: 10001,
+      path: 'sub-menu',
+      meta: {
+        title: '二层菜单',
+        hideHeader: true,
+        hideChildren: true,
+        show: true,
+        isSubMenu: true,
+      },
+      componentPath: null,
+    },
+    {
+      name: 'firstSubMenu',
+      path: 'first',
+      parentId: 10001,
+      id: 100011,
+      meta: {
+        title: '子级一',
+        show: true,
+      },
+      componentPath: 'views/modules/example/subMenuFirst',
+    },
+    {
+      name: 'secondSubMenu',
+      path: 'second',
+      parentId: 10001,
+      id: 100012,
+      meta: {
+        title: '子级二',
+        show: true,
+      },
+      componentPath: 'views/modules/example/subMenuSecond',
+    },
   ]
 
   const { data } = queryParams // 查询参数位置

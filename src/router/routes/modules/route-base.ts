@@ -11,11 +11,8 @@ const RootRoute: AppRouteModule[] = [
   {
     path: '/',
     name: 'Root',
-    redirect: PageEnum.BASE_HOME,
-    component: LAYOUT,
-    meta: {
-      title: 'Root',
-    },
+    meta: { title: '重定向' },
+    redirect: { name: 'Login' },
   },
   {
     path: '/login',
@@ -27,5 +24,18 @@ const RootRoute: AppRouteModule[] = [
     },
   },
 ]
+
+// 基础布局
+export const MainRoot: AppRouteModule = {
+  path: '/',
+  name: 'Main',
+  component: LAYOUT,
+  meta: {
+    title: '主入口',
+  },
+  children: [],
+}
+
+// RootRoute.push(MainRoot)
 
 export default RootRoute
