@@ -1,11 +1,12 @@
 import { App } from 'vue'
 import { listToTreeNode } from '@/utils/tools/TransData'
 import { LAYOUT, LAYOUT_ROUTER_BASE } from '@/router/libs/constant'
+
 /**
  * @description 通过登录用户的权限动态加载菜单配置，创建routers
  */
 export const createAsyncRoutes = (app: App) => {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     app.config.globalProperties.$ModuleApis.menu
       .userMenuNav({
         data: {},
@@ -71,7 +72,7 @@ export const initRoutesList = (menuTreeList: any[], parentMenu: any = null) => {
 
       currentRouter.component =
         item.componentPath === null || typeof item.componentPath === 'undefined'
-          ? item.meta.isSubMenu
+          ? item?.meta?.isSubMenu
             ? LAYOUT_ROUTER_BASE
             : LAYOUT
           : () => import(`@/${item.componentPath}`)

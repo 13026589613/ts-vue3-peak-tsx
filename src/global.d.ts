@@ -1,3 +1,11 @@
+declare interface ChangeEvent extends Event {
+  target: HTMLInputElement
+}
+
+declare interface WheelEvent {
+  path?: EventTarget[]
+}
+
 declare module '*.png' {
   const src: string
   export default src

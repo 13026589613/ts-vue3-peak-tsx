@@ -14,7 +14,7 @@ export function createAuthorityRouterGuard(app: App, router: Router) {
       next()
     } else {
       /**
-       * @description 根据登录用户获取菜单访问和控制权限
+       * 根据登录用户获取菜单访问和控制权限
        *              生成动态路由TreeList，采用addRoute装配
        */
       await createAsyncRoutes(app).then((res: any) => {
