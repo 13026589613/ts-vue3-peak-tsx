@@ -175,7 +175,7 @@
           .then(res => {
             if (res.success) {
               const { data } = res
-              Cookies.set('token', data.token, { expires: 100 }) // 保存系统登录 token
+              Cookies.set(window.TOKEN._AUTH, data.token, { expires: 100 }) // 保存系统登录 token
               Cookies.set('userInfo', data.userInfo, { expires: 100 }) // 存储用户资料
 
               router.push({ name: PageEnum.BASE_HOME_NAME })

@@ -1,7 +1,7 @@
-import { withInstall } from '../util';
-import Icon from './src/index.vue';
+// import { withInstall } from '../util';
+import Icon from './src/index.vue'
 
-withInstall(Icon);
+// withInstall(Icon);
 
-export { Icon };
-export default Icon;
+export { Icon }
+export default Icon

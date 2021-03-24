@@ -2,7 +2,7 @@
  * @description 普通TSX 组件写法，不使用注解
  */
 import { defineComponent, ref, getCurrentInstance, onMounted } from 'vue'
-import { Vue, Options, prop, mixins } from 'vue-class-component'
+// import { Vue, Options, prop } from 'vue-class-component'
 import { baseStore } from '@/store/modules/base'
 
 export default defineComponent({

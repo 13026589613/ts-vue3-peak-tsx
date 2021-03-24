@@ -2,9 +2,9 @@
  * @description 常用工具类.一大堆杂七杂八.什么都有反正可以抄袭过来的
  * @author PP
  */
-import Vue from 'vue'
 // import router from '@/router'
 import store from '@/store'
+import Cookies from 'js-cookie'
 
 /**
  * @description 自定义工具包插件
@@ -263,7 +263,7 @@ const toolsUtil = {
    * @description 清除登录信息
    */
   clearLoginInfo() {
-    Vue.prototype.$Cookies.remove('token')
+    Cookies.remove(window.TOKEN._AUTH)
     store.commit('ResetStore')
   },
   /**

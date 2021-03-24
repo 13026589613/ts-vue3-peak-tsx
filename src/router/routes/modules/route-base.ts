@@ -1,17 +1,18 @@
+import type { AppRouteModule } from '@/router/libs/types'
 import { PageEnum } from '@/enum/pageEnum'
+import { LAYOUT } from '@/router/libs/constant'
 
 /**
  * @description 系统基础主配置路由
  */
 const _import = require(`@/router/import/import_${process.env.NODE_ENV}`)
 
-import type { AppRouteModule } from '@/router/libs/types'
-
 const RootRoute: AppRouteModule[] = [
   {
     path: '/',
     name: 'Root',
     redirect: PageEnum.BASE_HOME,
+    component: LAYOUT,
     meta: {
       title: 'Root',
     },

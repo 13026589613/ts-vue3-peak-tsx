@@ -2,8 +2,11 @@
  * @description 页面布局 - 头部组件
  * @author PP
  */
+import Cookies from 'js-cookie'
+import { useRouter } from 'vue-router'
 import { Vue, Options } from 'vue-class-component'
 import { Prop } from 'vue-property-decorator'
+import { SmallDashOutlined, UnorderedListOutlined } from '@ant-design/icons-vue'
 
 import './index.scss'
 
@@ -19,7 +22,11 @@ class HeaderWrapper extends Vue {
 
   private loginUser: any = {}
 
+  private router = useRouter()
+
   @Prop({ default: () => [] }) private noticeList: any
+
+  @Prop({ default: () => true }) private isCollapsed?: boolean // 菜单收缩控制按钮
 
   /**
    * @description 渲染头部内容
@@ -28,19 +35,20 @@ class HeaderWrapper extends Vue {
   render() {
     return (
       <a-layout-header class={['']}>
-        <a-icon class='trigger' type={this.collapsed ? 'menu-unfold' : 'menu-fold'} />
+        {this.isCollapsed ? <UnorderedListOutlined /> : <SmallDashOutlined></SmallDashOutlined>}
+        {/* <a-icon class='trigger' type={this.isCollapsed ? 'menu-unfold' : 'menu-fold'} /> */}
 
         {/* 界面页签 */}
-        <breadcrumb
+        {/* <breadcrumb
           vShow={this.showBreadcrumb && this.showTopBreadcrumb}
           class={['header-breadcrumb']}
           key='transition-breadcrumb'
           showBreadcrumb={this.showBreadcrumb}
           showTopBreadcrumb={this.showTopBreadcrumb}
-        />
+        /> */}
 
         {/* 导航签 */}
-        {this.showTagTabsPosition === 'top' ? (
+        {/* {this.showTagTabsPosition === 'top' ? (
           <tag-tabs
             key='transition-tag-tabs'
             vShow={this.showTagTabs}
@@ -49,11 +57,11 @@ class HeaderWrapper extends Vue {
             activeMenuItem={this.activeMenuItem}
             isHeaderTab={true}
           />
-        ) : null}
+        ) : null} */}
 
         {/* 头部按钮集成区域 */}
         <section class='right-user-wrapper'>
-          <full-screen className={['i-font25', 'pad-all-5']} shrink={true} />
+          {/* <full-screen className={['i-font25', 'pad-all-5']} shrink={true} /> */}
 
           {/* 数据中心-大屏界面 */}
           <section
@@ -85,7 +93,7 @@ class HeaderWrapper extends Vue {
    * @description 菜单收缩状态控制
    */
   handleChangeCollapsed() {
-    this.$emit('change-collapsed', this.collapsed)
+    this.$emit('change-collapsed', this.isCollapsed)
   }
 
   /**
@@ -99,19 +107,22 @@ class HeaderWrapper extends Vue {
    * 用户退出登录
    */
   handleLogout() {
-    this.$ModuleApis.user
-      .logout({
-        data: {},
-      })
-      .then((res: any) => {
-        if (res.success === true) {
-          this.$tools.clearLoginInfo()
-          this.$router.replace('/login')
-          this.$emit('logout', true)
-        } else {
-          this.$emit('logout', false)
-        }
-      })
+    Cookies.remove(window.TOKEN._AUTH)
+    this.router.replace('/login')
+
+    // this.$ModuleApis.user
+    //   .logout({
+    //     data: {},
+    //   })
+    //   .then((res: any) => {
+    //     if (res.success === true) {
+    //       this.$tools.clearLoginInfo()
+    //       this.$router.replace('/login')
+    //       this.$emit('logout', true)
+    //     } else {
+    //       this.$emit('logout', false)
+    //     }
+    //   })
   }
 
   /**
@@ -146,9 +157,9 @@ class HeaderWrapper extends Vue {
             </a-tabs>
           </a-spin>
         </template>
-        <a-badge count={this.badgeNumber}>
+        {/* <a-badge count={this.badgeNumber}>
           <a-icon type='smile' class='i-font25 pad-all-5' />
-        </a-badge>
+        </a-badge> */}
       </a-popover>
     )
   }
@@ -186,16 +197,16 @@ class HeaderWrapper extends Vue {
         arrowPointAtCenter={true}
         overlayClassName={'header-content'}
       >
-        <a-badge count={this.badgeNumber}>
-          <a-avatar icon='user' src={this.loginUser.headerImg || this.defaultHeader} />
-        </a-badge>
+        {/* <a-badge count={this.badgeNumber}> */}
+        <a-avatar icon='user' src={this.loginUser.headerImg || this.defaultHeader} onClick={this.handleLogout} />
+        {/* </a-badge> */}
 
         <template v-slots='content'>
           <section class='header-info-wrapper'>
             <a-avatar size={80} src={this.loginUser.headerImg || this.defaultHeader} />
-            <span class='user-name-title'>{this.loginUser.name || this.defaultName}</span>
+            {/* <span class='user-name-title'>{this.loginUser.name || this.defaultName}</span> */}
 
-            <time-clock />
+            {/* <time-clock /> */}
           </section>
 
           <a-menu class='header-content-list'>

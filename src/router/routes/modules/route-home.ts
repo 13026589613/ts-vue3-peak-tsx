@@ -1,10 +1,10 @@
 /**
  * @description 系统首页入口路由配置
  */
-const _import = require(`@/router/import/import_${process.env.NODE_ENV}`)
-
 import type { AppRouteModule } from '@/router/libs/types'
 import { LAYOUT } from '@/router/libs/constant'
+
+const _import = require(`@/router/import/import_${process.env.NODE_ENV}`)
 
 const dashboard: AppRouteModule = {
   path: '/home',
@@ -17,7 +17,7 @@ const dashboard: AppRouteModule = {
   },
   children: [
     {
-      path: 'welcome',
+      path: '/home/welcome',
       name: 'Welcome',
       component: _import('common/dashboard/welcome/index'),
       meta: {

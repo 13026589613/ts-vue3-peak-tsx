@@ -39,3 +39,11 @@ export function setupStore(app: App<Element>) {
   app.use(store)
   initStores() // 全局性引入stores
 }
+
+export function resetStore() {
+  store.replaceState(JSON.parse(sessionStorage.getItem('store') as string))
+}
+
+export function setStore() {
+  sessionStorage.setItem('store', JSON.stringify(store.state))
+}

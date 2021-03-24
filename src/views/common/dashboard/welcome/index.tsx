@@ -14,6 +14,8 @@ import HelloWordTs from '@/views/components/hello-word-ts.vue'
 import HelloWordTsClass from '@/views/components/hello-word-ts-class.vue'
 import HelloWordTsx from '@/views/components/hello-word-tsx'
 import HelloWordClassTsx from '@/views/components/hello-word-class-tsx'
+
+import { Button } from 'ant-design-vue'
 import './index.scss'
 @Options({
   name: 'WelcomeComponent',
@@ -23,6 +25,7 @@ import './index.scss'
     HelloWordTsClass,
     HelloWordTsx,
     HelloWordClassTsx,
+    Button,
   },
   emits: ['countChange'],
 })
@@ -51,6 +54,7 @@ export default class WelcomeComponent extends Vue {
   render() {
     return (
       <div class='example-wrapper'>
+        <a-button>123123</a-button>
         <h3>1、路由跳转</h3>
         <div>
           <span class='example-content' onClick={() => this.handleRouterLink()}>
@@ -168,7 +172,6 @@ export default class WelcomeComponent extends Vue {
    * @description 退出登录
    */
   handleLogout() {
-    console.log(Cookies)
     Cookies.remove(window.TOKEN._AUTH)
     router.push({ name: 'Login' })
   }

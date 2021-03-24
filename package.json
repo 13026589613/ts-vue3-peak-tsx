@@ -34,6 +34,7 @@
     "mockjs": "^1.1.0",
     "ant-design-vue": "2.0.0",
     "@ant-design-vue/pro-layout": "^1.0.8",
+    "@ant-design/icons-vue": "^6.0.1",
     "@vueuse/core": "^4.1.0",
     "apexcharts": "^3.24.0",
     "crypto-es": "^1.2.6",

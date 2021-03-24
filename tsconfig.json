@@ -17,15 +17,8 @@
     ],
     "paths": {
       "@/*": [
-        "src/*",
-      ],
-      "@C/*": ["src/config/*"],
-      "@API/*": ["src/api/*"],
-      "@AST/*": ["src/assets/*"],
-      "@U/*": ["src/utils/*"],
-      "@V/*": ["src/views/*"],
-      "@SASS/*": ["src/assets/sass/*"],
-      "@D/*": ["src/decorator/*"]
+        "src/*"
+      ]
     },
     "lib": [
       "esnext",

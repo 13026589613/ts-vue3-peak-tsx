@@ -1,0 +1,59 @@
+.sys-setting-drawer {
+  p.flex-rows-container {
+    justify-content: space-between;
+    margin: 12px 0;
+    padding-left: 12px;
+  }
+
+  h3 {
+    padding-left: 10px;
+    position: relative;
+    font-size: 16px;
+  }
+
+  h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: #1890ff;
+  }
+}
+
+.sys-setting-wrapper .sys-setting {
+  cursor: pointer;
+  position: absolute;
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+  transition: all 0.55s cubic-bezier(0.08, 1.12, 0, 1) 0.12s;
+  // transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+
+  i {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+  }
+
+  &-inner {
+    border-radius: 20px;
+    background: #1890ff;
+    right: 20px;
+    top: calc(100% - 120px);
+  }
+
+  &-close {
+    border-radius: 10px 0 0 10px;
+    width: 30px;
+    height: 60px;
+    background: #d10d10;
+    right: 300px;
+    top: calc(50% - 30px);
+  }
+}

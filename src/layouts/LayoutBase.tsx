@@ -3,7 +3,8 @@
  */
 import { Vue, Options } from 'vue-class-component'
 import { SideWrapper, HeaderWrapper, ContentWrapper, FooterWrapper } from '@/layouts/components'
-
+import SettingWrapper from '@/components/Setting'
+import { useStore } from 'vuex'
 @Options({
   name: 'LayoutBase',
   components: {
@@ -11,15 +12,20 @@ import { SideWrapper, HeaderWrapper, ContentWrapper, FooterWrapper } from '@/lay
     HeaderWrapper,
     ContentWrapper,
     FooterWrapper,
+    SysSettingsBtn: SettingWrapper,
   },
   // emits: ['countChange'],
 })
 class LayoutBase extends Vue {
+  private store = useStore() // store
+
+  private menuListData = this.store.state.routeStore.allRoutes // 路由菜单数据
+
   render() {
     return (
-      <a-layout class={['layout']}>
+      <a-layout class={['layout']} style='min-height: 100%;'>
         {/* 菜单导航部分 */}
-        <left-side></left-side>
+        <left-side menuList={this.menuListData}></left-side>
 
         {/* 右侧部分 */}
         <a-layout>

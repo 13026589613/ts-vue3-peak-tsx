@@ -2,7 +2,7 @@
  * @description APP 初始化引导界面
  */
 import { defineComponent, ref, onMounted } from 'vue'
-import store from '@/store'
+import { resetStore, setStore } from '@/store'
 
 export default defineComponent({
   render() {
@@ -19,11 +19,11 @@ export default defineComponent({
      */
     onMounted(() => {
       if (sessionStorage.getItem('store') !== null) {
-        store.replaceState(JSON.parse(sessionStorage.getItem('store') as string))
+        resetStore()
       }
 
       window.addEventListener('beforeunload', () => {
-        sessionStorage.setItem('store', JSON.stringify(store.state))
+        setStore()
       })
     })
     // const msg = ref<string>('Vue3 + TypeScript + TSdX')

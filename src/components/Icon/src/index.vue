@@ -5,7 +5,7 @@
   import { PropType } from 'vue'
   import { defineComponent, ref, watch, onMounted, nextTick, unref, computed, CSSProperties } from 'vue'
   import Iconify from '@purge-icons/generated'
-  import { isString } from '@/utils/tools/is'
+  import { isString } from '@/utils/tools/Is'
 
   export default defineComponent({
     name: 'GIcon',
@@ -80,7 +80,7 @@
     display: block;
     min-width: 1em;
     min-height: 1em;
-    background: @iconify-bg-color;
+    // background: @iconify-bg-color;
     border-radius: 100%;
   }
 </style>

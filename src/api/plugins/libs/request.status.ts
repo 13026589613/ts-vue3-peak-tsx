@@ -22,7 +22,7 @@ export function checkRequestStatus(code: number = 200, msg: string | null, statu
     case 401:
       Message.error(`${msg || '访问权限错误'}`)
       setTimeout(() => {
-        Cookies.remove('token') // to-do需改成清除缓存的所有资源
+        Cookies.remove(window.TOKEN._AUTH) // to-do需改成清除缓存的所有资源
         router.replace({ name: 'login' })
       }, 500)
       break

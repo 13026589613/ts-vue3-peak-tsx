@@ -15,10 +15,22 @@ class RouteStore extends VuexModule {
   private allRoutes: any[] = []
   private generateRoutes: any[] = []
 
+  private hasAsyncRoutes = false // 是否已经加载路由
+
   @Mutation
   commitSetRoutesState(routers: any[]): void {
     this.generateRoutes = routers
     this.allRoutes = [].concat(...routers)
+  }
+
+  @Mutation
+  commitHasAsyncRoutes(status: boolean): void {
+    this.hasAsyncRoutes = status
+  }
+
+  @Action
+  ActionChangeRouterStatus(status: boolean) {
+    this.commitHasAsyncRoutes(status)
   }
 
   /**
@@ -28,7 +40,7 @@ class RouteStore extends VuexModule {
   async ActionSetRoutes(value: any[]): Promise<any | null> {
     try {
       this.commitSetRoutesState(value) // 设置 store - token
-
+      this.ActionChangeRouterStatus(true) // 标示已经装载路由
       return { generateRoutes: this.generateRoutes, allRoutes: this.allRoutes }
     } catch (error) {
       return null
@@ -41,6 +53,10 @@ class RouteStore extends VuexModule {
 
   get getAllRoutes(): any[] {
     return this.allRoutes
+  }
+
+  get getHasAsyncRoutes(): boolean {
+    return this.hasAsyncRoutes
   }
 }
 

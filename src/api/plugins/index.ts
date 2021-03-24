@@ -22,7 +22,7 @@ export default class Api {
   service: any
 
   // 全局性 token
-  token?: string = window.localStorage.getItem('token') || ''
+  token?: string = window.localStorage.getItem(window.TOKEN._AUTH) || ''
 
   // 构造器 options: Options
   constructor() {
