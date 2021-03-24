@@ -25,7 +25,7 @@ const userMenuNav = params => {
         show: true,
         menuLink: true,
       },
-      componentPath: 'views/modules/example/base',
+      componentPath: 'modules/example/base',
     },
     {
       name: 'eip',
@@ -45,7 +45,7 @@ const userMenuNav = params => {
       parentId: 200,
       id: 2001,
       path: 'area',
-      componentPath: 'views/modules/eip/area/index',
+      componentPath: 'modules/eip/area/index',
       meta: {
         title: '地区管理',
         show: true,
@@ -86,7 +86,7 @@ const userMenuNav = params => {
         title: '子级一',
         show: true,
       },
-      componentPath: 'views/modules/example/subMenuFirst',
+      componentPath: 'modules/example/subMenuFirst',
     },
     {
       name: 'secondSubMenu',
@@ -97,7 +97,7 @@ const userMenuNav = params => {
         title: '子级二',
         show: true,
       },
-      componentPath: 'views/modules/example/subMenuSecond',
+      componentPath: 'modules/example/subMenuSecond',
     },
   ]
 
