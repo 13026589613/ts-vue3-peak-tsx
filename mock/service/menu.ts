@@ -61,14 +61,14 @@ const userMenuNav = params => {
         // show: true,
       },
       // redirect: '/eip/area',
-      component: null,
+      componentPath: null,
     },
     {
       name: 'area',
       parentId: 10028,
       id: 10029,
       path: 'area',
-      component: 'views/modules/eip/area/index',
+      componentPath: 'views/modules/eip/area/index',
       meta: {
         title: '地区',
         // show: true,
