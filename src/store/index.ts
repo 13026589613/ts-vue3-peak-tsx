@@ -45,5 +45,8 @@ export function resetStore() {
 }
 
 export function setStore() {
-  sessionStorage.setItem('store', JSON.stringify(store.state))
+  let state = JSON.parse(JSON.stringify({ ...store.state }))
+  // delete state.routeStore // 清除权限菜单在路由访问时候的加载控制 ps : hasAsyncRoutes
+  state.routeStore.hasAsyncRoutes = false
+  sessionStorage.setItem('store', JSON.stringify(state))
 }

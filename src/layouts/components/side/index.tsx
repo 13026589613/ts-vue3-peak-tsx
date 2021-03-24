@@ -8,6 +8,7 @@ import { useStore } from 'vuex'
 import { Prop } from 'vue-property-decorator'
 import Cookies from 'js-cookie'
 
+import { PageEnum } from '@/enum/pageEnum'
 import { TimeClock } from '@/components/config'
 import Logo from './Logo'
 import { routeStore } from '@/store/modules/routes'
@@ -27,8 +28,7 @@ export default class SideWrapper extends Vue {
   private openKeysCache: any = [] // 缓存打开的菜单数组，收缩状态控制菜单是否打开
   private openKeys: any = [] // 打开的菜单数组
   private selectedKeys: any = [] // 选中菜单数组
-
-  private defaultSelect: any = null
+  private defaultSelect: any = PageEnum.BASE_HOME_NAME
 
   private sideWidth: number = 240
 
@@ -50,10 +50,10 @@ export default class SideWrapper extends Vue {
 
   // 初始化加载
   mounted = onMounted(() => {
-    //   this.openKeysCache = [...this.defaultOpen] // 缓存打开的菜单数组，收缩状态控制菜单是否打开
-    //   this.openKeys = [...this.defaultOpen] // 打开的菜单数组
-    //   this.selectedKeys = [...this.defaultSelect] // 选中菜单数组
-    //   this.renderMenuStatus()
+    // this.openKeysCache = [...this.defaultOpen] // 缓存打开的菜单数组，收缩状态控制菜单是否打开
+    // this.openKeys = [...this.defaultOpen] // 打开的菜单数组
+    // this.selectedKeys = [...this.defaultSelect] // 选中菜单数组
+    // this.renderMenuStatus()
   })
 
   /**
@@ -106,13 +106,13 @@ export default class SideWrapper extends Vue {
 
         <a-row style='padding-bottom: 10px;'>
           <a-col span='8'>
-            <router-link to={{ name: 'Home' }}>
+            <router-link to={{ name: PageEnum.BASE_HOME_NAME }}>
               <a-icon type='user' />
               <span>&nbsp;个人中心</span>
             </router-link>
           </a-col>
           <a-col span='8'>
-            <router-link to={{ name: 'Home' }}>
+            <router-link to={{ name: PageEnum.BASE_HOME_NAME }}>
               <a-icon type='setting' />
               <span>&nbsp;消息中心</span>
             </router-link>
@@ -132,17 +132,17 @@ export default class SideWrapper extends Vue {
    * @description 渲染导航路由-菜单列表
    */
   initMenu() {
-    // const on = {
-    //     select: (obj: any) => {
-    //       if (obj.key === this.defaultSelect) {
-    //         this.openKeys = []
-    //         this.$router.push({ name: this.defaultSelect })
-    //       }
-    //       this.selectedKeys = obj.selectedKeys
-    //       this.$emit('select', obj)
-    //     },
-    //     openChange: this.openMenuItem,
-    //   }
+    const on = {
+      select: (obj: any) => {
+        if (obj.key === this.defaultSelect) {
+          this.openKeys = []
+          this.$router.push({ name: this.defaultSelect })
+        }
+        this.selectedKeys = obj.selectedKeys
+        // this.$emit('select', obj)
+      },
+      // openChange: this.openMenuItem,
+    }
     const username = Cookies.get('username') || null
 
     return (
@@ -158,8 +158,10 @@ export default class SideWrapper extends Vue {
         {/* 根据用户确认首页 */}
         {/* {username === 'admin' ? ( */}
         <a-menu-item key={this.defaultSelect} class='home-side-item'>
-          <a-icon type='desktop' />
-          <span>系统中控台</span>
+          <router-link to={{ name: PageEnum.BASE_HOME_NAME }}>
+            <a-icon type='desktop' />
+            <span>系统中控台</span>
+          </router-link>
         </a-menu-item>
         {/* ) : null} */}
 

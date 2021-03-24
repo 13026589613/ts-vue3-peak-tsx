@@ -28,12 +28,21 @@ const RootRoute: AppRouteModule[] = [
 // 基础布局
 export const MainRoot: AppRouteModule = {
   path: '/',
-  name: 'Main',
+  name: 'MainRoute',
   component: LAYOUT,
   meta: {
     title: '主入口',
   },
-  children: [],
+  children: [
+    {
+      path: '/main',
+      name: 'Main',
+      component: _import('modules/main/Main'),
+      meta: {
+        title: 'routes.basic.main',
+      },
+    },
+  ],
 }
 
 // RootRoute.push(MainRoot)

@@ -10,7 +10,7 @@ import store from '@/store'
 export function createAuthorityRouterGuard(app: App, router: Router) {
   router.beforeEach(async (to: any, _from: any, next: any) => {
     // 已加载导航菜单数据标示，排除全局配置的可访问路由
-    if (store.state.routeStore.hasAsyncRoutes) {
+    if (store.state.routeStore?.hasAsyncRoutes) {
       next()
     } else {
       /**

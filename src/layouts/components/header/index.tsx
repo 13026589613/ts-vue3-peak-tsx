@@ -7,7 +7,7 @@ import { useRouter } from 'vue-router'
 import { Vue, Options } from 'vue-class-component'
 import { Prop } from 'vue-property-decorator'
 import { SmallDashOutlined, UnorderedListOutlined } from '@ant-design/icons-vue'
-
+import { PageEnum } from '@/enum/pageEnum'
 import './index.scss'
 
 @Options({
@@ -211,20 +211,20 @@ class HeaderWrapper extends Vue {
 
           <a-menu class='header-content-list'>
             <a-menu-item key='0'>
-              <router-link to={{ name: 'Home' }}>
+              <router-link to={{ name: PageEnum.BASE_HOME_NAME }}>
                 <a-icon type='user' />
                 <span>个人中心</span>
               </router-link>
             </a-menu-item>
             <a-menu-item key='1'>
-              <router-link to={{ name: 'Home' }}>
+              <router-link to={{ name: PageEnum.BASE_HOME_NAME }}>
                 <a-icon type='setting' />
                 <span>修改密码</span>
               </router-link>
             </a-menu-item>
 
             <a-menu-item key='2'>
-              <router-link to={{ name: 'Home' }}>
+              <router-link to={{ name: PageEnum.BASE_HOME_NAME }}>
                 <a-icon type='setting' />
                 <span>消息中心</span>
               </router-link>
