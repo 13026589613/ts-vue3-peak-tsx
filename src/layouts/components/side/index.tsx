@@ -147,6 +147,7 @@ export default class SideWrapper extends Vue {
 
     return (
       <a-menu
+        class='left-menu-content'
         mode={this.mode}
         theme={this.theme}
         // openKeys={this.openKeys}

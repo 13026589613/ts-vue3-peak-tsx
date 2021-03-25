@@ -23,7 +23,7 @@ class LayoutBase extends Vue {
 
   render() {
     return (
-      <a-layout class={['layout']} style='min-height: 100%;'>
+      <a-layout class={['layout']} style='height: 100%;'>
         {/* 菜单导航部分 */}
         <left-side menuList={this.menuListData}></left-side>
 

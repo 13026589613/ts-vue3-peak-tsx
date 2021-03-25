@@ -18,7 +18,7 @@ export default class Logo extends Vue {
     let titleArray = (this.title || '').split('/')
     return (
       <div class='side-logo'>
-        <router-link to={"{name:'dashboard'}"}>
+        <router-link to={{ name: 'Main' }}>
           <img src={this.logoImage} />
 
           <ul>{titleArray.map((item: any) => (item ? <li>{item}</li> : ''))}</ul>

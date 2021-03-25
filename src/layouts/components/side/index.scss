@@ -34,7 +34,19 @@
 
 // 左侧菜单 及 logo部分
 .side.left-side {
+  height: 100%;
   box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+
+  .ant-layout-sider-children {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .left-menu-content {
+      flex: 1;
+      overflow: auto;
+    }
+  }
 
   /* ------------------ 头部用户样式 ------------------ */
   .header-content {

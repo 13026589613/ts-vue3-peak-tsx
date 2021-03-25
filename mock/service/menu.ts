@@ -41,9 +41,64 @@ const userMenuNav = params => {
       componentPath: null,
     },
     {
-      name: 'area',
+      name: 'menu',
       parentId: 200,
       id: 2001,
+      path: 'menu',
+      componentPath: 'modules/eip/menu/index',
+      meta: {
+        title: '菜单管理',
+        show: true,
+      },
+    },
+    {
+      name: 'role',
+      parentId: 200,
+      id: 2002,
+      path: 'role',
+      componentPath: 'modules/eip/role/index',
+      meta: {
+        title: '角色管理',
+        show: true,
+      },
+    },
+    {
+      name: 'user',
+      parentId: 200,
+      id: 2003,
+      path: 'user',
+      componentPath: 'modules/eip/user/index',
+      meta: {
+        title: '用户管理',
+        show: true,
+      },
+    },
+    {
+      name: 'dept',
+      parentId: 200,
+      id: 2004,
+      path: 'dept',
+      componentPath: 'modules/eip/organ/index',
+      meta: {
+        title: '部门管理',
+        show: true,
+      },
+    },
+    {
+      name: 'dict',
+      parentId: 200,
+      id: 2005,
+      path: 'dict',
+      componentPath: 'modules/eip/dict/index',
+      meta: {
+        title: '字典管理',
+        show: true,
+      },
+    },
+    {
+      name: 'area',
+      parentId: 200,
+      id: 2006,
       path: 'area',
       componentPath: 'modules/eip/area/index',
       meta: {
